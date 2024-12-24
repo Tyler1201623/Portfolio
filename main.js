@@ -14,8 +14,16 @@ class DesktopOS {
         const timeElement = document.querySelector('.time');
         const updateTime = () => {
             const now = new Date();
-            const options = { hour: 'numeric', minute: 'numeric', hour12: true };
-            timeElement.textContent = now.toLocaleTimeString('en-US', options);
+            const timeOptions = { hour: 'numeric', minute: 'numeric', hour12: true };
+            const dateOptions = { month: 'short', day: 'numeric', year: 'numeric' };
+            
+            const timeString = now.toLocaleTimeString('en-US', timeOptions);
+            const dateString = now.toLocaleDateString('en-US', dateOptions);
+            
+            timeElement.innerHTML = `
+                <div class="time-display">${timeString}</div>
+                <div class="date-display">${dateString}</div>
+            `;
         };
         updateTime();
         setInterval(updateTime, 1000);
@@ -130,9 +138,9 @@ class DesktopOS {
         const window = document.createElement('div');
         window.className = 'window';
         
-        // Add mobile-specific class
         if (window.innerWidth <= 768) {
             window.classList.add('mobile-window');
+            document.body.style.overflow = 'hidden';
         }
         
         window.innerHTML = `
@@ -152,17 +160,20 @@ class DesktopOS {
         const closeButton = window.querySelector('.close');
         closeButton.addEventListener('click', () => {
             window.classList.add('closing');
+            document.body.style.overflow = '';
             setTimeout(() => {
                 window.remove();
             }, 300);
         });
         
-        this.makeDraggable(window);
+        if (window.innerWidth > 768) {
+            this.makeDraggable(window);
+        }
+        
         document.querySelector('.windows-container').appendChild(window);
         
         return window;
-    }
-    createAboutWindow() {
+    }    createAboutWindow() {
         const content = `
             <div class="about-window">
                 <div class="about-header">
@@ -437,11 +448,15 @@ class DesktopOS {
                     const project = this.projects.find(p => p.id === projectId);
                     if (project) {
                         const content = `
-                            <div class="project-window">
-                                <img src="${project.image}" alt="${project.title}">
-                                <h3>${project.title}</h3>
-                                <div class="tech-stack">
-                                    ${project.tech ? project.tech.map(tech => `<span class="tech-tag">${tech}</span>`).join('') : ''}
+                            <div class="single-project-view">
+                                <div class="project-showcase">
+                                    <div class="project-image-container">
+                                        <img src="${project.image}" alt="${project.title}">
+                                    </div>
+                                    <h3>${project.title}</h3>
+                                    <div class="tech-stack">
+                                        ${project.tech ? project.tech.map(tech => `<span class="tech-tag">${tech}</span>`).join('') : ''}
+                                    </div>
                                 </div>
                             </div>
                         `;
@@ -450,9 +465,7 @@ class DesktopOS {
                 }
             });
         });
-    }
-}
-
+    }}
 // Initialize the desktop environment
 document.addEventListener('DOMContentLoaded', () => {
     const desktop = new DesktopOS();
