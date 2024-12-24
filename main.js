@@ -130,6 +130,11 @@ class DesktopOS {
         const window = document.createElement('div');
         window.className = 'window';
         
+        // Add mobile-specific class
+        if (window.innerWidth <= 768) {
+            window.classList.add('mobile-window');
+        }
+        
         window.innerHTML = `
             <div class="window-header">
                 <div class="window-controls">
@@ -157,7 +162,6 @@ class DesktopOS {
         
         return window;
     }
-
     createAboutWindow() {
         const content = `
             <div class="about-window">

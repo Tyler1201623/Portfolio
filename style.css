@@ -493,6 +493,18 @@ html {
     animation: fadeInUp 1s ease-out;
 }
 
+@media screen and (max-width: 768px) {
+    .journey-text {
+        font-size: 16px;
+        line-height: 1.6;
+        padding: 15px;
+    }
+
+    .tagline {
+        font-size: 1.2em;
+        padding: 0 15px;
+    }
+}
 @keyframes fadeInUp {
     from {
         opacity: 0;
@@ -507,13 +519,19 @@ html {
 /* Responsive Design */
 @media screen and (max-width: 768px) {
     .desktop-icons {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 10px;
-        padding: 10px;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+        padding: 15px;
     }
 
     .icon {
-        transform: scale(0.9);
+        width: auto;
+        padding: 8px;
+    }
+
+    .icon img {
+        width: 50px;
+        height: 50px;
     }
 
     .window {
@@ -529,15 +547,36 @@ html {
     }
 
     .taskbar {
-        height: 50px;
+        height: 60px;
+        padding: 0 10px;
     }
 
     .search-bar {
-        width: 150px;
+        display: none; /* Hide search on mobile */
     }
-}
 
-@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .system-tray {
+        gap: 10px;
+        padding-right: 10px;
+    }
+
+    .mobile-window {
+        width: 100vw;
+        height: 100vh;
+        top: 0;
+        left: 0;
+        transform: none;
+        border-radius: 0;
+    }
+
+    .window-content {
+        padding: 10px;
+    }
+    
+    .about-window {
+        padding: 10px;
+    }
+}@media screen and (min-width: 769px) and (max-width: 1024px) {
     .desktop-icons {
         grid-template-columns: repeat(4, 1fr);
     }
