@@ -10,6 +10,173 @@ class DesktopOS {
         this.initializeStartMenu();
     }
 
+    setupWindowSnapping() {
+        document.addEventListener('mousemove', (e) => {
+            if (!this.activeWindow) return;
+            
+            const { clientX, clientY } = e;
+            const screenWidth = window.innerWidth;
+            const screenHeight = window.innerHeight;
+            
+            // Snap to left half
+            if (clientX < 50) {
+                this.snapWindow(this.activeWindow, 'left');
+            }
+            // Snap to right half
+            else if (clientX > screenWidth - 50) {
+                this.snapWindow(this.activeWindow, 'right');
+            }
+            // Snap to top (maximize)
+            else if (clientY < 50) {
+                this.snapWindow(this.activeWindow, 'maximize');
+            }
+        });
+    }
+
+    snapWindow(window, position) {
+        switch(position) {
+            case 'left':
+                window.style.left = '0';
+                window.style.top = '0';
+                window.style.width = '50vw';
+                window.style.height = '100vh';
+                break;
+            case 'right':
+                window.style.left = '50vw';
+                window.style.top = '0';
+                window.style.width = '50vw';
+                window.style.height = '100vh';
+                break;
+            case 'maximize':
+                window.style.left = '0';
+                window.style.top = '0';
+                window.style.width = '100vw';
+                window.style.height = '100vh';
+                break;
+        }
+    }
+
+    setupKeyboardShortcuts() {
+        document.addEventListener('keydown', (e) => {
+            // Windows key + D = Show Desktop
+            if (e.key === 'd' && e.metaKey) {
+                this.toggleDesktop();
+            }
+            // Windows key + E = Open Projects
+            if (e.key === 'e' && e.metaKey) {
+                this.createProjectsWindow();
+            }
+            // Windows key + A = Open About
+            if (e.key === 'a' && e.metaKey) {
+                this.createAboutWindow();
+            }
+        });
+    }
+
+    setupFuzzySearch() {
+        const searchInput = document.querySelector('.search-bar input');
+        searchInput.addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase();
+            const results = this.projects.filter(project => {
+                const score = this.fuzzyMatch(query, project.title.toLowerCase());
+                return score > 0.3; // Threshold for matching
+            });
+            this.updateSearchResults(results);
+        });
+    }
+
+    fuzzyMatch(pattern, str) {
+        let score = 0;
+        let patternIdx = 0;
+        let strIdx = 0;
+        
+        while (strIdx < str.length) {
+            if (pattern[patternIdx] === str[strIdx]) {
+                score += 1;
+                patternIdx += 1;
+            }
+            strIdx += 1;
+        }
+        
+        return score / pattern.length;
+    }
+
+    setupWindowTransitions() {
+        this.createWindow = (title, content) => {
+            const window = document.createElement('div');
+            window.className = 'window';
+            window.style.transform = 'scale(0.9)';
+            window.style.opacity = '0';
+            
+            // Enhanced window content
+            window.innerHTML = `
+                <div class="window-header">
+                    <div class="window-controls">
+                        <div class="control-button close"></div>
+                        <div class="control-button minimize"></div>
+                        <div class="control-button maximize"></div>
+                    </div>
+                    <div class="window-title">${title}</div>
+                    <div class="window-actions">
+                        <button class="action-button refresh"><i class="fas fa-redo"></i></button>
+                        <button class="action-button more"><i class="fas fa-ellipsis-v"></i></button>
+                    </div>
+                </div>
+                <div class="window-content">
+                    ${content}
+                </div>
+                <div class="window-status-bar">
+                    <span class="status-text">Ready</span>
+                    <span class="window-size"></span>
+                </div>
+            `;
+            
+            // Smooth entrance animation
+            requestAnimationFrame(() => {
+                window.style.transform = 'scale(1)';
+                window.style.opacity = '1';
+            });
+            
+            return window;
+        };
+    }
+
+    setupContextMenu() {
+        document.addEventListener('contextmenu', (e) => {
+            e.preventDefault();
+            
+            const contextMenu = document.createElement('div');
+            contextMenu.className = 'context-menu';
+            contextMenu.style.left = `${e.pageX}px`;
+            contextMenu.style.top = `${e.pageY}px`;
+            
+            const menuItems = [
+                { icon: 'fa-refresh', text: 'Refresh' },
+                { icon: 'fa-expand', text: 'View' },
+                { icon: 'fa-sort', text: 'Sort by' },
+                { icon: 'fa-copy', text: 'Copy' },
+                { icon: 'fa-paste', text: 'Paste' }
+            ];
+            
+            contextMenu.innerHTML = menuItems.map(item => `
+                <div class="menu-item">
+                    <i class="fas ${item.icon}"></i>
+                    <span>${item.text}</span>
+                </div>
+            `).join('');
+            
+            document.body.appendChild(contextMenu);
+            
+            // Close context menu when clicking outside
+            const closeMenu = () => {
+                contextMenu.remove();
+                document.removeEventListener('click', closeMenu);
+            };
+            
+            document.addEventListener('click', closeMenu);
+        });
+    }
+
     startClock() {
         const timeElement = document.querySelector('.time');
         const updateTime = () => {
@@ -470,3 +637,4 @@ class DesktopOS {
 document.addEventListener('DOMContentLoaded', () => {
     const desktop = new DesktopOS();
 });
+

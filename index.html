@@ -2,56 +2,79 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Tyler Keesee's Portfolio</title>
-    <meta name="description" content="Tyler Keesee - Software Engineer specializing in full-stack development, custom PC building, and innovative tech solutions">
-    <meta property="og:title" content="Tyler Keesee | Software Engineer">
-    <meta property="og:description" content="Engineering the Future of Technology">
+    
+    <!-- Enhanced Meta Tags for SEO and Social Sharing -->
+    <meta name="description" content="Tyler Keesee - Innovative Software Engineer crafting next-generation solutions through AI-powered development and custom PC architecture">
+    <meta property="og:title" content="Tyler Keesee | Full Stack Engineer & Tech Innovator">
+    <meta property="og:description" content="Pioneering the Future of Technology">
     <meta property="og:image" content="Picture Of Me/302094755_5812631322161322_4653173079054672043_n.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <!-- Progressive Web App Support -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#0d0d2b">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    
+    <!-- Enhanced Favicon Support -->
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    
+    <!-- Preload Critical Resources -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" as="style">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" as="style">
+    <link rel="preload" href="style.css" as="style">
+    <link rel="preload" href="main.js" as="script">
+    
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
+    <!-- Loading Animation -->
+    <div class="loading-screen">
+        <div class="loader"></div>
+    </div>
+
     <div class="desktop-environment">
         <div class="desktop-icons"></div>
-                  <div class="taskbar">
-                      <div class="start-button">
-                          <i class="fab fa-windows"></i>
-                      </div>
-                      <div class="search-bar">
-                          <i class="fas fa-search"></i>
-                          <input type="text" placeholder="Type here to search">
-                      </div>
-                      <div class="active-windows"></div>
-                      <div class="system-tray">
-                          <div class="social-links">
-                              <a href="mailto:keeseetyler@yahoo.com"><i class="fas fa-envelope"></i></a>
-                              <a href="https://github.com/Tyler1201623" target="_blank"><i class="fab fa-github"></i></a>
-                              <a href="https://www.linkedin.com/in/tyler-keesee-677baa326/" target="_blank"><i class="fab fa-linkedin"></i></a>
-                          </div>
-                          <div class="system-icons">
-                              <i class="fas fa-wifi"></i>
-                              <i class="fas fa-volume-up"></i>
-                              <i class="fas fa-battery-full"></i>
-                          </div>
-                          <span class="time"></span>
-                      </div>
-                  </div>
-                  <div class="windows-container"></div>
-              </div>
-    <div class="search-bar">
-        <i class="fas fa-search"></i>
-        <input type="text" placeholder="Type here to search">
-    </div>
-    <script src="main.js"></script>
+        <div class="taskbar">
+            <div class="start-button">
+                <i class="fab fa-windows"></i>
+            </div>
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Type here to search">
+            </div>
+            <div class="active-windows"></div>
+            <div class="system-tray">
+                <div class="social-links">
+                    <a href="mailto:keeseetyler@yahoo.com"><i class="fas fa-envelope"></i></a>
+                    <a href="https://github.com/Tyler1201623" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/tyler-keesee-677baa326/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                </div>
+                <div class="system-icons">
+                    <i class="fas fa-wifi"></i>
+                    <i class="fas fa-volume-up"></i>
+                    <i class="fas fa-battery-full"></i>
+                </div>
+                <span class="time"></span>
+            </div>
+        </div>
+        <div class="windows-container"></div>
+    </div>    <!-- Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw.js');
+        }
+    </script>
+    
+    <!-- Main Script -->
+    <script src="main.js" defer></script>
 </body>
 </html>
-
-<meta name="theme-color" content="#0d0d2b">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
