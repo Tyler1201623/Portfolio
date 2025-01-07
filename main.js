@@ -36,7 +36,8 @@ class Portfolio {
                 image: 'Projects/Electrical Engineering Platform/Screenshot 2024-11-13 182047.png',
                 tech: ['HTML5', 'CSS3', 'JavaScript'],
                 url: 'https://tyler1201623.github.io/Electrical-Engineering/'
-            },            {
+            },
+            {
                 title: 'Object Detection',
                 image: 'Projects/Object Detection/Screenshot 2024-11-27 112910.png',
                 tech: ['Python', 'OpenCV', 'Machine Learning'],
@@ -46,13 +47,8 @@ class Portfolio {
                 title: 'Whiffs Contracting',
                 image: 'Projects/Whiffs Contracting/Screenshot_13-11-2024_15504_.jpeg',
                 tech: ['React', 'Node.js', 'MongoDB'],
-            },
+            }
         ];
-
-        this.init();
-    }
-
-    init() {
         this.loadProjects();
         this.initTypeWriter();
         this.initScrollAnimation();
@@ -74,6 +70,13 @@ class Portfolio {
         card.className = 'project-card';
         card.setAttribute('data-project', project.title);
 
+        // List of projects that shouldn't show the live button
+        const hideButtonProjects = [
+            'Account Login System',
+            'Automated Trading',
+            'Whiffs Contracting'
+        ];
+
         card.innerHTML = `
             <div class="project-image">
                 <img src="${project.image}" alt="${project.title}">
@@ -81,33 +84,34 @@ class Portfolio {
                     <div class="tech-stack">
                         ${project.tech.map(tech => `<span class="tech-tag">${tech}</span>`).join('')}
                     </div>
-                    <a href="${project.url}" target="_blank" class="view-project-btn">
-                        <span>View Live Project</span>
-                        <i class="fas fa-external-link-alt"></i>
-                    </a>
+                    ${!hideButtonProjects.includes(project.title) && project.url ? `
+                        <a href="${project.url}" target="_blank" class="view-project-btn">
+                            <span>View Live Project</span>
+                            <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    ` : ''}
                 </div>
             </div>
             <h3>${project.title}</h3>
         `;
         return card;
     }
-    imageExists(image_url) {
-        const http = new XMLHttpRequest();
-        http.open('HEAD', image_url, false);
-        try {
-            http.send();
-            return http.status !== 404;
-        } catch(e) {
-            return false;
-        }
-    }
-
     initTypeWriter() {
         const text = document.querySelector('.typing-text');
         const words = [
             'Software Engineer',
             'Full Stack Developer',
-            'Problem Solver',
+            'AI Integration Expert',
+            'Machine Learning Engineer',
+            'Javascript',
+            'AI Solutions Architect',
+            'Deep Learning Specialist',
+            'NLP Engineer',
+            'Python Developer',
+            'Rust',
+            'Automation Engineer',
+            'Go Lang',
+            'AI Research Engineer',
             'Tech Innovator'
         ];
         let wordIndex = 0;
