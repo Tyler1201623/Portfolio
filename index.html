@@ -3,30 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Tyler Keesee's Portfolio</title>
+    <title>Tyler Keesee | Full Stack Engineer</title>
     
-    <!-- Enhanced Meta Tags for SEO and Social Sharing -->
-    <meta name="description" content="Tyler Keesee - Innovative Software Engineer crafting next-generation solutions through AI-powered development and custom PC architecture">
-    <meta property="og:title" content="Tyler Keesee | Full Stack Engineer & Tech Innovator">
-    <meta property="og:description" content="Pioneering the Future of Technology">
+    <!-- Enhanced Meta Tags -->
+    <meta name="description" content="Tyler Keesee - Innovative Full Stack Engineer specializing in AI-powered development, blockchain solutions, and enterprise-grade applications">
+    <meta property="og:title" content="Tyler Keesee | Full Stack Engineering Innovator">
+    <meta property="og:description" content="Crafting Next-Generation Digital Solutions">
     <meta property="og:image" content="Picture Of Me/302094755_5812631322161322_4653173079054672043_n.jpg">
-    <meta name="twitter:card" content="summary_large_image">
-    
-    <!-- Progressive Web App Support -->
-    <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#0d0d2b">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    
-    <!-- Enhanced Favicon Support -->
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
     
     <!-- Preload Critical Resources -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" as="style">
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" as="style">
     <link rel="preload" href="style.css" as="style">
     <link rel="preload" href="main.js" as="script">
     
@@ -36,45 +21,110 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <!-- Loading Animation -->
-    <div class="loading-screen">
-        <div class="loader"></div>
-    </div>
-
-    <div class="desktop-environment">
-        <div class="desktop-icons"></div>
-        <div class="taskbar">
-            <div class="start-button">
-                <i class="fab fa-windows"></i>
-            </div>
-            <div class="search-bar">
-                <i class="fas fa-search"></i>
-                <input type="text" placeholder="Type here to search">
-            </div>
-            <div class="active-windows"></div>
-            <div class="system-tray">
-                <div class="social-links">
-                    <a href="mailto:keeseetyler@yahoo.com"><i class="fas fa-envelope"></i></a>
-                    <a href="https://github.com/Tyler1201623" target="_blank"><i class="fab fa-github"></i></a>
-                    <a href="https://www.linkedin.com/in/tyler-keesee-677baa326/" target="_blank"><i class="fab fa-linkedin"></i></a>
-                </div>
-                <div class="system-icons">
-                    <i class="fas fa-wifi"></i>
-                    <i class="fas fa-volume-up"></i>
-                    <i class="fas fa-battery-full"></i>
-                </div>
-                <span class="time"></span>
-            </div>
+    <header class="navbar">
+        <div class="nav-content">
+            <div class="logo">TK</div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
         </div>
-        <div class="windows-container"></div>
-    </div>    <!-- Service Worker Registration -->
-    <script>
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('/sw.js');
-        }
-    </script>
-    
-    <!-- Main Script -->
-    <script src="main.js" defer></script>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <img src="Picture Of Me/302094755_5812631322161322_4653173079054672043_n.jpg" alt="Tyler Keesee" class="profile-img">
+                <h1>Tyler Keesee</h1>
+                <div class="typing-text"></div>
+                <p class="tagline">Engineering the Future of Technology - One Line of Code at a Time</p>
+                <div class="cta-buttons">
+                    <a href="#projects" class="cta-primary">View Projects</a>
+                    <a href="resume/Tyler_Keesee_Resume.pdf" class="cta-secondary">Download Resume</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="about">
+            <div class="section-container">
+                <h2>About Me</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <p class="intro">Full Stack Engineer crafting innovative solutions through code.</p>
+                        <div class="journey">
+                            <p>Started my tech journey at 18, teaching myself how to build custom gaming PCs. This early passion ignited my drive to explore software development, web technologies, and system optimization.</p>
+                            <p>As a self-taught software engineer, I specialize in leveraging AI to deliver efficient, scalable solutions. My expertise includes full-stack development, creating robust applications, and solving complex problems across multiple domains.</p>
+                        </div>
+                        <div class="skills">
+                            <h3>Technical Expertise</h3>
+                            <div class="skill-tags">
+                                <span>Go</span>
+                                <span>Rust</span>
+                                <span>Java</span>
+                                <span>C++</span>
+                                <span>Python</span>
+                                <span>JavaScript</span>
+                                <span>React</span>
+                                <span>Node.js</span>
+                                <span>MongoDB</span>
+                                <span>AI Integration</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="about-highlights">
+                        <div class="highlight-card">
+                            <i class="fas fa-code"></i>
+                            <h4>Full Stack Development</h4>
+                            <p>Building end-to-end solutions with modern technologies</p>
+                        </div>
+                        <div class="highlight-card">
+                            <i class="fas fa-robot"></i>
+                            <h4>AI Integration</h4>
+                            <p>Leveraging artificial intelligence for optimal solutions</p>
+                        </div>
+                        <div class="highlight-card">
+                            <i class="fas fa-laptop-code"></i>
+                            <h4>Custom PC Building</h4>
+                            <p>Crafting high-performance computing solutions</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="projects">
+            <div class="section-container">
+                <h2>Featured Projects</h2>
+                <div class="project-grid">
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="social-links">
+                <a href="mailto:keeseetyler@yahoo.com" class="social-link">
+                    <i class="fas fa-envelope"></i>
+                    <span>keeseetyler@yahoo.com</span>
+                </a>
+                <a href="https://github.com/Tyler1201623" target="_blank" class="social-link">
+                    <i class="fab fa-github"></i>
+                    <span>GitHub</span>
+                </a>
+                <a href="https://www.linkedin.com/in/tyler-keesee-677baa326/" target="_blank" class="social-link">
+                    <i class="fab fa-linkedin"></i>
+                    <span>LinkedIn</span>
+                </a>
+            </div>
+            <p>© 2024 Tyler Keesee. Innovating the Future of Technology.</p>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
 </body>
 </html>
