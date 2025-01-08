@@ -55,6 +55,33 @@ class Portfolio {
         this.initNavigation();
         this.initSkillBars();
         this.initResumeDownload();
+        this.initTimelineAnimation();
+        this.initServiceCards();
+    }
+
+    initTimelineAnimation() {
+        const timelineItems = document.querySelectorAll('.timeline-item');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.5 });
+
+        timelineItems.forEach(item => observer.observe(item));
+    }
+
+    initServiceCards() {
+        const serviceCards = document.querySelectorAll('.service-card');
+        serviceCards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-10px)';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0)';
+            });
+        });
     }
 
     loadProjects() {
