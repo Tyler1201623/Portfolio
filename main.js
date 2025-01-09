@@ -46,7 +46,7 @@ class Portfolio {
             {
                 title: 'Whiffs Contracting',
                 image: 'Projects/Whiffs Contracting/Screenshot_13-11-2024_15504_.jpeg',
-                tech: ['React', 'Node.js', 'MongoDB'],
+                tech: ['React', 'Node.js', 'MongoDB']
             }
         ];
         this.loadProjects();
@@ -64,12 +64,16 @@ class Portfolio {
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
+                    entry.target.style.animation = `fadeInUp 0.6s ease forwards ${entry.target.dataset.delay || '0s'}`;
                 }
             });
-        }, { threshold: 0.5 });
+        }, { threshold: 0.2 });
 
-        timelineItems.forEach(item => observer.observe(item));
+        timelineItems.forEach((item, index) => {
+            item.style.opacity = '0';
+            item.dataset.delay = `${index * 0.2}s`;
+            observer.observe(item);
+        });
     }
 
     initServiceCards() {
@@ -97,7 +101,6 @@ class Portfolio {
         card.className = 'project-card';
         card.setAttribute('data-project', project.title);
 
-        // List of projects that shouldn't show the live button
         const hideButtonProjects = [
             'Account Login System',
             'Automated Trading',
@@ -123,6 +126,7 @@ class Portfolio {
         `;
         return card;
     }
+
     initTypeWriter() {
         const text = document.querySelector('.typing-text');
         const words = [
@@ -227,6 +231,7 @@ class Portfolio {
             const link = document.createElement('a');
             link.href = 'resume/Tyler_Keesee_Resume.pdf';
             link.download = 'Tyler_Keesee_Resume.pdf';
+            link.target = '_blank';
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
