@@ -25,15 +25,17 @@ body {
     line-height: 1.6;
     overflow-x: hidden;
 }
-
+/* Navigation Bar Styles */
 .navbar {
     position: fixed;
     top: 0;
+    left: 0;
     width: 100%;
     background: rgba(13, 13, 43, 0.95);
     backdrop-filter: blur(10px);
     z-index: 1000;
-    padding: 1rem 0;
+    padding: 1.2rem 0;
+    box-shadow: 0 4px 30px rgba(0, 255, 136, 0.1);
 }
 
 .nav-content {
@@ -46,14 +48,15 @@ body {
 }
 
 .logo {
-    font-size: 1.5rem;
+    font-size: 2rem;
     font-weight: 700;
     color: var(--accent-color);
+    text-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
 }
 
 .nav-links {
     display: flex;
-    gap: 2rem;
+    gap: 3rem;
     list-style: none;
 }
 
@@ -61,11 +64,29 @@ body {
     color: var(--text-color);
     text-decoration: none;
     font-weight: 500;
+    font-size: 1.1rem;
+    transition: var(--transition);
+    position: relative;
+    padding: 0.5rem 0;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--accent-color);
     transition: var(--transition);
 }
 
 .nav-links a:hover {
     color: var(--accent-color);
+}
+
+.nav-links a:hover::after {
+    width: 100%;
 }
 
 .hero {
@@ -388,4 +409,158 @@ footer {
 
 .visible {
     animation: fadeInUp 0.6s ease forwards;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.cta-primary, .cta-secondary {
+    padding: 0.8rem 2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.cta-primary {
+    background: var(--accent-color);
+    color: var(--bg-color);
+}
+
+.cta-secondary {
+    border: 2px solid var(--accent-color);
+    color: var(--accent-color);
+}
+
+.cta-primary:hover, .cta-secondary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 255, 136, 0.2);
+}
+
+.about {
+    padding: 8rem 2rem;
+    background: linear-gradient(125deg, var(--bg-color), #1a237e);
+}
+
+.section-title {
+    font-size: 3rem;
+    color: var(--accent-color);
+    text-align: center;
+    margin-bottom: 3rem;
+    text-shadow: 0 0 20px rgba(0, 255, 136, 0.2);
+}
+
+.about-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.intro {
+    font-size: 2rem;
+    color: var(--accent-color);
+    margin-bottom: 3rem;
+    text-align: center;
+    font-weight: 600;
+}
+
+.journey {
+    display: grid;
+    gap: 2rem;
+    margin-bottom: 4rem;
+}
+
+.journey-card {
+    background: var(--card-bg);
+    padding: 2rem;
+    border-radius: 15px;
+    transition: var(--transition);
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+}
+
+.journey-card i {
+    font-size: 2rem;
+    color: var(--accent-color);
+}
+
+.journey-card p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin: 0;
+}
+
+.journey-card:hover {
+    transform: translateY(-5px);
+    background: rgba(0, 255, 136, 0.05);
+}
+
+.skills {
+    margin-top: 4rem;
+}
+
+.skills h3 {
+    font-size: 2rem;
+    color: var(--accent-color);
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.skill-card {
+    background: var(--card-bg);
+    padding: 2rem;
+    border-radius: 15px;
+    transition: var(--transition);
+}
+
+.skill-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.skill-header i {
+    font-size: 2rem;
+    color: var(--accent-color);
+}
+
+.skill-header span {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.skill-bar-container {
+    height: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.skill-bar {
+    height: 100%;
+    background: var(--accent-color);
+    border-radius: 4px;
+    width: 0;
+    transition: width 1.5s ease-in-out;
+}
+
+@media (max-width: 768px) {
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .journey-card {
+        flex-direction: column;
+    }
 }

@@ -192,17 +192,21 @@ class Portfolio {
         });
     }
 
-    initSkillBars() {
+    initSkills() {
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    const level = entry.target.getAttribute('data-level');
-                    entry.target.style.width = `${level}%`;
+                    entry.target.querySelectorAll('.skill-bar').forEach(bar => {
+                        const level = bar.getAttribute('data-level');
+                        bar.style.width = `${level}%`;
+                    });
                 }
             });
-        }, { threshold: 0.5 });
+        }, { threshold: 0.2 });
 
-        document.querySelectorAll('.skill-bar').forEach(bar => observer.observe(bar));
+        document.querySelectorAll('.skills-grid').forEach(grid => {
+            observer.observe(grid);
+        });
     }
 
     initTimelineAnimation() {
