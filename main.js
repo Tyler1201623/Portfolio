@@ -56,7 +56,7 @@ class Portfolio {
                 url: 'https://tyler1201623.github.io/Productivity-Booster/'
             },
             {
-                title: 'PyLearn',
+                title: 'PyLearn-IDE',
                 image: 'Projects/PyLearn/Screenshot 2025-01-10 064928.png',
                 tech: ['Python', 'Educational', 'Interactive Learning'],
                 url: 'https://tyler1201623.github.io/PyLearn-IDE/'
