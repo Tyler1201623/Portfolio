@@ -134,6 +134,7 @@ class Portfolio {
             'Deep Learning Specialist',
             'NLP Engineer',
             'Python Developer',
+            'AI Expert',
             'Rust Developer',
             'Automation Engineer',
             'Go Lang Developer',
