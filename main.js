@@ -59,7 +59,7 @@ class Portfolio {
                 title: 'PyLearn',
                 image: 'Projects/PyLearn/Screenshot 2025-01-10 064928.png',
                 tech: ['Python', 'Educational', 'Interactive Learning'],
-                url: 'https://tyler1201623.github.io/PyLearn/'
+                url: 'https://tyler1201623.github.io/PyLearn-IDE/'
             },
             {
                 title: 'TypeScript ToDo List',
