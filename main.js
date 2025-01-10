@@ -2,6 +2,12 @@ class Portfolio {
     constructor() {
         this.projects = [
             {
+                title: 'Billionaire Motivation',
+                image: 'Projects/Billionaire Motivation/Screenshot 2025-01-09 221453.png',
+                tech: ['JavaScript', 'Motivation', 'Content Management'],
+                url: 'https://tyler1201623.github.io/Billionaire-Motivation/'
+            },
+            {
                 title: 'Budget Tracking',
                 image: 'Projects/Budget Tracking/Screenshot 2024-11-26 045410.png',
                 tech: ['JavaScript', 'Charts.js', 'Financial Analytics'],
@@ -48,6 +54,12 @@ class Portfolio {
                 image: 'Projects/Typing Speed Test/Screenshot 2025-01-07 123535.png',
                 tech: ['JavaScript', 'Performance Metrics', 'UI/UX'],
                 url: 'https://tyler1201623.github.io/Typing-Speed-Test/'
+            },
+            {
+                title: 'Website URLs',
+                image: 'Projects/Website URLS/Screenshot 2025-01-09 221525.png',
+                tech: ['JavaScript', 'URL Management', 'Web Development'],
+                url: 'https://tyler1201623.github.io/Website-URLS/'
             }
         ];
         this.loadProjects();
