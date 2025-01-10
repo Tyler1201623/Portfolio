@@ -46,19 +46,25 @@ class Portfolio {
             {
                 title: 'Object Detection',
                 image: 'Projects/Object Detection/Screenshot 2025-01-09 203524.png',
-                tech: ['Python', 'OpenCV', 'Machine Learning'],
+                tech: ['Javascript', 'React', 'Machine Learning'],
                 url: 'https://tyler1201623.github.io/Object-Detection/'
             },
             {
                 title: 'Productivity Booster',
                 image: 'Projects/Productivity Booster/Screenshot 2025-01-09 204129.png',
-                tech: ['React', 'TypeScript', 'Productivity Tools'],
+                tech: ['React', 'Javascript', 'Productivity Tools'],
                 url: 'https://tyler1201623.github.io/Productivity-Booster/'
+            },
+            {
+                title: 'PyLearn',
+                image: 'Projects/PyLearn/Screenshot 2025-01-10 064928.png',
+                tech: ['Python', 'Educational', 'Interactive Learning'],
+                url: 'https://tyler1201623.github.io/PyLearn/'
             },
             {
                 title: 'TypeScript ToDo List',
                 image: 'Projects/Type Script To-Do List/Screenshot 2025-01-09 204231.png',
-                tech: ['TypeScript', 'React', 'State Management'],
+                tech: ['JavaScript', 'React', 'State Management'],
                 url: 'https://tyler1201623.github.io/TypeScript-ToDo-List/'
             },
             {
@@ -83,7 +89,7 @@ class Portfolio {
         this.initTypeWriter();
         this.initScrollAnimation();
         this.initNavigation();
-        this.initSkillBars();
+        this.initSkills();
         this.initResumeDownload();
         this.initTimelineAnimation();
         this.initServiceCards();
@@ -113,6 +119,7 @@ class Portfolio {
 
         return card;
     }
+
     loadProjects() {
         const projectGrid = document.querySelector('.project-grid');
         projectGrid.innerHTML = '';
@@ -200,6 +207,7 @@ class Portfolio {
                     entry.target.querySelectorAll('.skill-bar').forEach(bar => {
                         const level = bar.getAttribute('data-level');
                         bar.style.width = `${level}%`;
+                        bar.style.opacity = '1';
                     });
                 }
             });
