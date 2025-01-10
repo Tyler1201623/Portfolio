@@ -14,6 +14,12 @@ class Portfolio {
                 url: 'https://tyler1201623.github.io/Budget-Tracking/'
             },
             {
+                title: 'Crypto Price Tracker',
+                image: 'Projects/Crypto Price Tracker/Screenshot 2024-11-13 185702.png',
+                tech: ['React', 'API Integration', 'Real-time Data'],
+                url: 'https://tyler1201623.github.io/Crypto-Price-Tracker/'
+            },
+            {
                 title: 'Digital Clock',
                 image: 'Projects/Digital Clock/Screenshot 2025-01-07 123315.png',
                 tech: ['JavaScript', 'HTML5', 'CSS3'],
@@ -30,6 +36,12 @@ class Portfolio {
                 image: 'Projects/Ecom/Screenshot 2025-01-07 123420.png',
                 tech: ['React', 'E-commerce', 'State Management'],
                 url: 'https://tyler1201623.github.io/Ecom/'
+            },
+            {
+                title: 'Electrical Engineering Platform',
+                image: 'Projects/Electrical Engineering Platform/Screenshot 2024-11-13 182047.png',
+                tech: ['React', 'Engineering', 'Educational'],
+                url: 'https://tyler1201623.github.io/Electrical-Engineering-Platform/'
             },
             {
                 title: 'Object Detection',
@@ -62,6 +74,11 @@ class Portfolio {
                 url: 'https://tyler1201623.github.io/Website-URLS/'
             }
         ];
+
+        this.initializePortfolio();
+    }
+
+    initializePortfolio() {
         this.loadProjects();
         this.initTypeWriter();
         this.initScrollAnimation();
@@ -70,43 +87,7 @@ class Portfolio {
         this.initResumeDownload();
         this.initTimelineAnimation();
         this.initServiceCards();
-    }
-
-    initTimelineAnimation() {
-        const timelineItems = document.querySelectorAll('.timeline-item');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.animation = `fadeInUp 0.6s ease forwards ${entry.target.dataset.delay || '0s'}`;
-                }
-            });
-        }, { threshold: 0.2 });
-
-        timelineItems.forEach((item, index) => {
-            item.style.opacity = '0';
-            item.dataset.delay = `${index * 0.2}s`;
-            observer.observe(item);
-        });
-    }
-
-    initServiceCards() {
-        const serviceCards = document.querySelectorAll('.service-card');
-        serviceCards.forEach(card => {
-            card.addEventListener('mouseenter', () => {
-                card.style.transform = 'translateY(-10px)';
-            });
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = 'translateY(0)';
-            });
-        });
-    }
-
-    loadProjects() {
-        const projectGrid = document.querySelector('.project-grid');
-        this.projects.forEach(project => {
-            const projectCard = this.createProjectCard(project);
-            projectGrid.appendChild(projectCard);
-        });
+        this.initProjectAnimations();
     }
 
     createProjectCard(project) {
@@ -116,22 +97,29 @@ class Portfolio {
 
         card.innerHTML = `
             <div class="project-image">
-                <img src="${project.image}" alt="${project.title}">
-                <div class="project-overlay">
-                    <div class="tech-stack">
-                        ${project.tech.map(tech => `<span class="tech-tag">${tech}</span>`).join('')}
-                    </div>
-                    ${project.url ? `
-                        <a href="${project.url}" target="_blank" class="view-project-btn">
-                            <span>View Live Project</span>
-                            <i class="fas fa-external-link-alt"></i>
-                        </a>
-                    ` : ''}
-                </div>
+                <img src="${project.image}" alt="${project.title}" loading="lazy">
             </div>
-            <h3>${project.title}</h3>
+            <div class="project-content">
+                <h3>${project.title}</h3>
+                <div class="tech-stack">
+                    ${project.tech.map(tech => `<span class="tech-tag">${tech}</span>`).join('')}
+                </div>
+                <a href="${project.url}" target="_blank" class="view-project-btn">
+                    <span>View Live Project</span>
+                    <i class="fas fa-external-link-alt"></i>
+                </a>
+            </div>
         `;
+
         return card;
+    }
+    loadProjects() {
+        const projectGrid = document.querySelector('.project-grid');
+        projectGrid.innerHTML = '';
+        this.projects.forEach(project => {
+            const projectCard = this.createProjectCard(project);
+            projectGrid.appendChild(projectCard);
+        });
     }
 
     initTypeWriter() {
@@ -141,14 +129,14 @@ class Portfolio {
             'Full Stack Developer',
             'AI Integration Expert',
             'Machine Learning Engineer',
-            'Javascript',
+            'Javascript Developer',
             'AI Solutions Architect',
             'Deep Learning Specialist',
             'NLP Engineer',
             'Python Developer',
-            'Rust',
+            'Rust Developer',
             'Automation Engineer',
-            'Go Lang',
+            'Go Lang Developer',
             'AI Research Engineer',
             'Tech Innovator'
         ];
@@ -156,7 +144,7 @@ class Portfolio {
         let charIndex = 0;
         let isDeleting = false;
 
-        function type() {
+        const type = () => {
             const currentWord = words[wordIndex];
             if (isDeleting) {
                 text.textContent = currentWord.substring(0, charIndex - 1);
@@ -176,13 +164,12 @@ class Portfolio {
             } else {
                 setTimeout(type, isDeleting ? 50 : 100);
             }
-        }
+        };
 
         type();
     }
 
     initScrollAnimation() {
-        const sections = document.querySelectorAll('section');
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -191,15 +178,14 @@ class Portfolio {
             });
         }, { threshold: 0.3 });
 
-        sections.forEach(section => observer.observe(section));
+        document.querySelectorAll('section').forEach(section => observer.observe(section));
     }
 
     initNavigation() {
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', (e) => {
                 e.preventDefault();
-                const targetId = link.getAttribute('href');
-                document.querySelector(targetId).scrollIntoView({
+                document.querySelector(link.getAttribute('href')).scrollIntoView({
                     behavior: 'smooth'
                 });
             });
@@ -207,37 +193,69 @@ class Portfolio {
     }
 
     initSkillBars() {
-        const skillBars = document.querySelectorAll('.skill-bar');
-        skillBars.forEach(bar => {
-            const level = bar.getAttribute('data-level');
-            const progress = bar.querySelector('.skill-progress');
-            if (progress) {
-                progress.style.width = '0%';
-                
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            progress.style.width = `${level}%`;
-                        }
-                    });
-                }, { threshold: 0.5 });
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const level = entry.target.getAttribute('data-level');
+                    entry.target.style.width = `${level}%`;
+                }
+            });
+        }, { threshold: 0.5 });
 
-                observer.observe(bar);
-            }
+        document.querySelectorAll('.skill-bar').forEach(bar => observer.observe(bar));
+    }
+
+    initTimelineAnimation() {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = `fadeInUp 0.6s ease forwards ${entry.target.dataset.delay || '0s'}`;
+                }
+            });
+        }, { threshold: 0.2 });
+
+        document.querySelectorAll('.timeline-item').forEach((item, index) => {
+            item.style.opacity = '0';
+            item.dataset.delay = `${index * 0.2}s`;
+            observer.observe(item);
+        });
+    }
+
+    initServiceCards() {
+        document.querySelectorAll('.service-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-10px)';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0)';
+            });
+        });
+    }
+
+    initProjectAnimations() {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.project-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            observer.observe(card);
         });
     }
 
     initResumeDownload() {
-        const resumeButton = document.querySelector('.cta-secondary');
-        resumeButton.addEventListener('click', (e) => {
+        document.querySelector('.cta-secondary').addEventListener('click', (e) => {
             e.preventDefault();
             const link = document.createElement('a');
             link.href = 'resume/Tyler_Keesee_Resume.pdf';
             link.download = 'Tyler_Keesee_Resume.pdf';
-            link.target = '_blank';
-            document.body.appendChild(link);
             link.click();
-            document.body.removeChild(link);
         });
     }
 }
