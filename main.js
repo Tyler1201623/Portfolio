@@ -44,6 +44,12 @@ class Portfolio {
                 url: 'https://tyler1201623.github.io/Electrical-Engineering-Platform/'
             },
             {
+                title: 'Habit Flow | Track Your Success',
+                image: 'Projects/Habit Tracker/Screenshot_11-1-2025_64948_.jpeg',
+                tech: ['JavaScript', 'Habit Tracking', 'Data Visualization'],
+                url: 'https://tyler1201623.github.io/Habit-Tracker/'
+            },
+            {
                 title: 'Object Detection',
                 image: 'Projects/Object Detection/Screenshot 2025-01-09 203524.png',
                 tech: ['Javascript', 'React', 'Machine Learning'],
@@ -80,20 +86,7 @@ class Portfolio {
                 url: 'https://tyler1201623.github.io/Website-URLS/'
             }
         ];
-
         this.initializePortfolio();
-    }
-
-    initializePortfolio() {
-        this.loadProjects();
-        this.initTypeWriter();
-        this.initScrollAnimation();
-        this.initNavigation();
-        this.initSkills();
-        this.initResumeDownload();
-        this.initTimelineAnimation();
-        this.initServiceCards();
-        this.initProjectAnimations();
     }
 
     createProjectCard(project) {
@@ -120,12 +113,110 @@ class Portfolio {
         return card;
     }
 
-    loadProjects() {
-        const projectGrid = document.querySelector('.project-grid');
-        projectGrid.innerHTML = '';
-        this.projects.forEach(project => {
-            const projectCard = this.createProjectCard(project);
-            projectGrid.appendChild(projectCard);
+    initializePortfolio() {
+        this.loadProjects();
+        this.initTypeWriter();
+        this.initScrollAnimation();
+        this.initNavigation();
+        this.initSkills();
+        this.initResumeDownload();
+        this.initTimelineAnimation();
+        this.initServiceCards();
+        this.initProjectAnimations();
+    }
+
+    initNavigation() {
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                document.querySelector(link.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    }
+
+    initProjectAnimations() {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.project-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            observer.observe(card);
+        });
+    }
+
+    initResumeDownload() {
+        document.querySelector('.cta-secondary').addEventListener('click', (e) => {
+            e.preventDefault();
+            const link = document.createElement('a');
+            link.href = 'resume/Tyler_Keesee_Resume.pdf';
+            link.download = 'Tyler_Keesee_Resume.pdf';
+            link.click();
+        });
+    }
+
+    initScrollAnimation() {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.3 });
+
+        document.querySelectorAll('section').forEach(section => observer.observe(section));
+    }
+
+    initServiceCards() {
+        document.querySelectorAll('.service-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-10px)';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0)';
+            });
+        });
+    }
+
+    initSkills() {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.querySelectorAll('.skill-bar').forEach(bar => {
+                        const level = bar.getAttribute('data-level');
+                        bar.style.width = `${level}%`;
+                        bar.style.opacity = '1';
+                    });
+                }
+            });
+        }, { threshold: 0.2 });
+
+        document.querySelectorAll('.skills-grid').forEach(grid => {
+            observer.observe(grid);
+        });
+    }
+
+    initTimelineAnimation() {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = `fadeInUp 0.6s ease forwards ${entry.target.dataset.delay || '0s'}`;
+                }
+            });
+        }, { threshold: 0.2 });
+
+        document.querySelectorAll('.timeline-item').forEach((item, index) => {
+            item.style.opacity = '0';
+            item.dataset.delay = `${index * 0.2}s`;
+            observer.observe(item);
         });
     }
 
@@ -177,98 +268,12 @@ class Portfolio {
         type();
     }
 
-    initScrollAnimation() {
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { threshold: 0.3 });
-
-        document.querySelectorAll('section').forEach(section => observer.observe(section));
-    }
-
-    initNavigation() {
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                document.querySelector(link.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-    }
-
-    initSkills() {
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.querySelectorAll('.skill-bar').forEach(bar => {
-                        const level = bar.getAttribute('data-level');
-                        bar.style.width = `${level}%`;
-                        bar.style.opacity = '1';
-                    });
-                }
-            });
-        }, { threshold: 0.2 });
-
-        document.querySelectorAll('.skills-grid').forEach(grid => {
-            observer.observe(grid);
-        });
-    }
-
-    initTimelineAnimation() {
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.animation = `fadeInUp 0.6s ease forwards ${entry.target.dataset.delay || '0s'}`;
-                }
-            });
-        }, { threshold: 0.2 });
-
-        document.querySelectorAll('.timeline-item').forEach((item, index) => {
-            item.style.opacity = '0';
-            item.dataset.delay = `${index * 0.2}s`;
-            observer.observe(item);
-        });
-    }
-
-    initServiceCards() {
-        document.querySelectorAll('.service-card').forEach(card => {
-            card.addEventListener('mouseenter', () => {
-                card.style.transform = 'translateY(-10px)';
-            });
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = 'translateY(0)';
-            });
-        });
-    }
-
-    initProjectAnimations() {
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, { threshold: 0.1 });
-
-        document.querySelectorAll('.project-card').forEach(card => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(20px)';
-            observer.observe(card);
-        });
-    }
-
-    initResumeDownload() {
-        document.querySelector('.cta-secondary').addEventListener('click', (e) => {
-            e.preventDefault();
-            const link = document.createElement('a');
-            link.href = 'resume/Tyler_Keesee_Resume.pdf';
-            link.download = 'Tyler_Keesee_Resume.pdf';
-            link.click();
+    loadProjects() {
+        const projectGrid = document.querySelector('.project-grid');
+        projectGrid.innerHTML = '';
+        this.projects.forEach(project => {
+            const projectCard = this.createProjectCard(project);
+            projectGrid.appendChild(projectCard);
         });
     }
 }
