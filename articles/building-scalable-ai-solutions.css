@@ -1,0 +1,135 @@
+.article-content {
+    max-width: 800px;
+    margin: 120px auto 60px;
+    padding: 0 20px;
+}
+
+.blog-post {
+    background: var(--card-bg);
+    border-radius: 15px;
+    padding: 40px;
+    box-shadow: 0 4px 30px rgba(0, 255, 136, 0.1);
+}
+
+.blog-post h1 {
+    font-size: 2.5rem;
+    color: var(--accent-color);
+    margin-bottom: 1.5rem;
+}
+
+.article-meta {
+    display: flex;
+    gap: 1.5rem;
+    color: var(--accent-color);
+    margin-bottom: 2rem;
+    font-size: 0.9rem;
+}
+
+.article-section {
+    margin: 2.5rem 0;
+}
+
+.article-section h2 {
+    color: var(--accent-color);
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+}
+
+.article-section p {
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+}
+
+.article-section ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.article-section li {
+    margin: 1rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.article-section li:before {
+    content: '→';
+    color: var(--accent-color);
+    position: absolute;
+    left: 0;
+}
+
+/* Add to existing building-scalable-ai-solutions.css */
+.reading-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    background: var(--accent-color);
+    z-index: 1001;
+    transition: width 0.1s ease;
+}
+
+@media (max-width: 992px) {
+    .article-content {
+        margin: 100px auto 40px;
+        padding: 0 1.5rem;
+    }
+    
+    .blog-post {
+        padding: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .blog-post h1 {
+        font-size: 2rem;
+    }
+    
+    .article-section h2 {
+        font-size: 1.5rem;
+    }
+    
+    .article-meta {
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 480px) {
+    .article-content {
+        margin: 80px auto 30px;
+        padding: 0 1rem;
+    }
+    
+    .blog-post {
+        padding: 1.5rem;
+    }
+    
+    .blog-post h1 {
+        font-size: 1.8rem;
+    }
+    
+    .article-section {
+        margin: 2rem 0;
+    }
+    
+    .article-section li {
+        padding-left: 1.2rem;
+    }
+}
+
+/* Print styles for better readability when printing */
+@media print {
+    .navbar,
+    .footer {
+        display: none;
+    }
+    
+    .article-content {
+        margin: 0;
+        padding: 0;
+    }
+    
+    .blog-post {
+        box-shadow: none;
+    }
+}

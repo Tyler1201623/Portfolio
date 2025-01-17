@@ -111,9 +111,7 @@ class Portfolio {
         `;
 
         return card;
-    }
-
-    initializePortfolio() {
+    }    initializePortfolio() {
         this.loadProjects();
         this.initTypeWriter();
         this.initScrollAnimation();
