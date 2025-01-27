@@ -221,7 +221,7 @@ class Portfolio {
     initTypeWriter() {
         const text = document.querySelector('.typing-text');
         const words = [
-            'Software Engineer',
+            'Self-Taught Engineer',
             'Full Stack Developer',
             'AI Integration Expert',
             'Machine Learning Engineer',
@@ -234,7 +234,7 @@ class Portfolio {
             'Rust Developer',
             'Automation Engineer',
             'Go Lang Developer',
-            'AI Research Engineer',
+            'Software Engineer',
             'Tech Innovator'
         ];
         let wordIndex = 0;
@@ -243,6 +243,8 @@ class Portfolio {
 
         const type = () => {
             const currentWord = words[wordIndex];
+            const isMobile = window.innerWidth <= 480;
+            
             if (isDeleting) {
                 text.textContent = currentWord.substring(0, charIndex - 1);
                 charIndex--;
@@ -259,13 +261,17 @@ class Portfolio {
                 wordIndex = (wordIndex + 1) % words.length;
                 setTimeout(type, 500);
             } else {
-                setTimeout(type, isDeleting ? 50 : 100);
+                // Adjust timing for mobile
+                if (isMobile) {
+                    setTimeout(type, isDeleting ? 30 : 80);
+                } else {
+                    setTimeout(type, isDeleting ? 50 : 100);
+                }
             }
         };
 
         type();
     }
-
     loadProjects() {
         const projectGrid = document.querySelector('.project-grid');
         projectGrid.innerHTML = '';
