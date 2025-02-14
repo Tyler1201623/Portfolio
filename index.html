@@ -1,14 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, viewport-fit=cover">
     <title>Tyler Keesee | Self-Taught Engineer</title>
     
     <meta name="description" content="Tyler Keesee - Innovative Full Stack Engineer specializing in AI-powered development, blockchain solutions, and enterprise-grade applications">
     <meta property="og:title" content="Tyler Keesee | Full Stack Engineering Innovator">
     <meta property="og:description" content="Crafting Next-Generation Digital Solutions">
     <meta property="og:image" content="Picture Of Me/302094755_5812631322161322_4653173079054672043_n.jpg">
+    <meta name="theme-color" content="#0d0d2b">
     
     <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
@@ -16,9 +17,14 @@
     <link rel="manifest" href="manifest.json">
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" as="style">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Remove Three.js and Particles.js -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script> -->
 </head>
 <body>
+    <a href="#main" class="skip-link">Skip to main content</a>
     <header class="navbar">
         <div class="nav-content">
             <a href="#home" class="logo">TK</a>
@@ -39,7 +45,7 @@
             </nav>
         </div>
     </header>
-    <main>
+    <main id="main">
         <section id="home" class="hero">
             <div class="hero-content">
                 <img src="Picture Of Me/302094755_5812631322161322_4653173079054672043_n.jpg" alt="Tyler Keesee" class="profile-img">
@@ -151,14 +157,32 @@ const result = buildNextGenSolution();
             </div>
         </section>
 
+        <!-- Remove tech-globe div -->
+        <!-- <div id="tech-globe"></div> -->
+        
         <section id="projects" class="projects">
             <div class="section-container">
                 <h2>Featured Projects</h2>
+                <!-- Remove GitHub activity feed -->
                 <div class="project-grid">
+                    <!-- ...existing project cards... -->
+                    <div class="project-filters">
+                        <button class="filter-btn active" data-filter="all">All</button>
+                        <button class="filter-btn" data-filter="ai">AI</button>
+                        <button class="filter-btn" data-filter="web">Web</button>
+                        <button class="filter-btn" data-filter="mobile">Mobile</button>
+                    </div>
                     <!-- Projects will be dynamically loaded via JavaScript -->
+                    <img src="placeholder.jpg" data-src="actual-image.jpg" alt="Project preview" loading="lazy">
                 </div>
             </div>
         </section>
+
+        <!-- Remove empty tech stack section -->
+        <!-- <section id="tech-stack" class="tech-stack-section">
+            <h2>Technology Expertise</h2>
+            <div class="tech-radar"></div>
+        </section> -->
 
         <section id="timeline" class="timeline">
             <div class="section-container">

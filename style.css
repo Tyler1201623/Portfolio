@@ -6,6 +6,19 @@
     --accent-color: #00ff88;
     --card-bg: rgba(255, 255, 255, 0.05);
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --light-bg: #ffffff;
+    --light-text: #333333;
+    --light-accent: #0984e3;
+    --theme-transition: background-color 0.3s, color 0.3s;
+    /* Remove unused gradients */
+    /* --gradient-1: linear-gradient(45deg, #00ff88, #00bcd4);
+    --gradient-2: linear-gradient(45deg, #ff4081, #00ff88); */
+}
+
+[data-theme="light"] {
+    --bg-color: var(--light-bg);
+    --text-color: var(--light-text);
+    --accent-color: var(--light-accent);
 }
 
 * {
@@ -278,6 +291,12 @@ body {
     border-radius: 15px;
     overflow: hidden;
     padding-bottom: 1.5rem;
+    transform-style: preserve-3d;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.project-card:hover {
+    transform: perspective(1000px) rotateY(10deg) rotateX(5deg) translateY(-5px);
 }
 
 .project-image {
@@ -551,7 +570,16 @@ footer {
         opacity: 1;
         transform: translateY(0);
     }
-}}
+}
+
+@keyframes float-in {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-float {
+    animation: float-in 0.6s ease-out forwards;
+}
 
 .visible {
     animation: fadeInUp 0.6s ease forwards;
@@ -821,4 +849,119 @@ footer {
 
 .read-more:hover {
     gap: 1rem;
+}
+
+/* Remove voice command and AI chat button styles */
+/* .ai-chat-button, .voice-command-button {
+    display: none;
+} */
+
+/* Add glass morphism effect */
+.glass-effect {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+}
+
+/* Add animated gradient background */
+.gradient-bg {
+    background: linear-gradient(
+        45deg,
+        var(--bg-color),
+        #1a237e,
+        #0d47a1,
+        var(--bg-color)
+    );
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Enhanced accessibility */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--accent-color);
+    color: var(--text-color);
+    padding: 8px;
+    z-index: 1001;
+    transition: top 0.3s;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+/* Remove tech globe styles */
+/* #tech-globe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: -1;
+    opacity: 0.6;
+} */
+
+/* Remove tech radar styles */
+/* .tech-radar {
+    width: 100%;
+    height: 600px;
+    margin: 2rem 0;
+    position: relative;
+} */
+
+/* Remove GitHub activity styles */
+/* .github-activity {
+    background: var(--card-bg);
+    padding: 2rem;
+    border-radius: 15px;
+    margin-bottom: 2rem;
+} */
+
+.project-filters {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.filter-btn {
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 25px;
+    background: var(--card-bg);
+    color: var(--text-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filter-btn.active {
+    background: var(--gradient-1);
+    box-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
+}
+
+/* Add 3D card effect */
+.project-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1));
+    transition: opacity 0.3s ease;
+    opacity: 0;
+}
+
+.project-card:hover::before {
+    opacity: 1;
 }

@@ -14,12 +14,6 @@ class Portfolio {
                 url: 'https://tyler1201623.github.io/Budget-Tracking/'
             },
             {
-                title: 'Crypto Price Tracker',
-                image: 'Projects/Crypto Price Tracker/Screenshot 2024-11-13 185702.png',
-                tech: ['React', 'API Integration', 'Real-time Data'],
-                url: 'https://tyler1201623.github.io/Crypto-Price-Tracker/'
-            },
-            {
                 title: 'Digital Clock',
                 image: 'Projects/Digital Clock/Screenshot 2025-01-07 123315.png',
                 tech: ['JavaScript', 'HTML5', 'CSS3'],
@@ -68,6 +62,12 @@ class Portfolio {
                 url: 'https://tyler1201623.github.io/PyLearn-IDE/'
             },
             {
+                title: 'Recipe Master',
+                image: 'Projects/Recipe Master/Screenshot 2025-02-14 035417.png',
+                tech: ['JavaScript', 'Recipe API', 'UI/UX Design'],
+                url: 'https://tyler1201623.github.io/Recipe-Master/'
+            },
+            {
                 title: 'TypeScript ToDo List',
                 image: 'Projects/Type Script To-Do List/Screenshot 2025-01-09 204231.png',
                 tech: ['JavaScript', 'React', 'State Management'],
@@ -87,6 +87,10 @@ class Portfolio {
             }
         ];
         this.initializePortfolio();
+        // Remove tech globe and GitHub activity initialization
+        // this.techGlobe = new TechGlobe();
+        // this.githubActivity = new GithubActivity();
+        this.initProjectFilters();
     }
 
     createProjectCard(project) {
@@ -280,12 +284,86 @@ class Portfolio {
             projectGrid.appendChild(projectCard);
         });
     }
+
+    initProjectFilters() {
+        const filters = document.querySelectorAll('.filter-btn');
+        filters.forEach(filter => {
+            filter.addEventListener('click', () => {
+                const category = filter.dataset.filter;
+                this.filterProjects(category);
+            });
+        });
+    }
+
+    filterProjects(category) {
+        const projects = document.querySelectorAll('.project-card');
+        projects.forEach(project => {
+            if (category === 'all' || project.dataset.category === category) {
+                project.style.display = 'block';
+            } else {
+                project.style.display = 'none';
+            }
+        });
+    }
+}
+
+// Remove unused classes
+// class TechGlobe {...}
+// class GithubActivity {...}
+// class PortfolioEnhancements {...}
+
+class ThemeManager {
+    constructor() {
+        this.theme = localStorage.getItem('theme') || 'dark';
+        this.initThemeToggle();
+    }
+
+    initThemeToggle() {
+        const toggle = document.createElement('button');
+        toggle.className = 'theme-toggle';
+        toggle.innerHTML = '<i class="fas fa-moon"></i>';
+        toggle.setAttribute('aria-label', 'Toggle theme');
+        document.body.appendChild(toggle);
+
+        toggle.addEventListener('click', () => this.toggleTheme());
+        this.applyTheme();
+    }
+
+    toggleTheme() {
+        this.theme = this.theme === 'dark' ? 'light' : 'dark';
+        localStorage.setItem('theme', this.theme);
+        this.applyTheme();
+    }
+
+    applyTheme() {
+        document.documentElement.setAttribute('data-theme', this.theme);
+    }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
     initMobileMenu();
     new Portfolio();
+    new ThemeManager();
+    initLazyLoading();
+    // Remove PortfolioEnhancements initialization
+    // new PortfolioEnhancements();
 });
+
+function initLazyLoading() {
+    const images = document.querySelectorAll('img[data-src]');
+    const imageObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                img.src = img.dataset.src;
+                img.removeAttribute('data-src');
+                observer.unobserve(img);
+            }
+        });
+    });
+
+    images.forEach(img => imageObserver.observe(img));
+}
 
 function initMobileMenu() {
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');

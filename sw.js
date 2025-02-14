@@ -1,11 +1,13 @@
-const CACHE_NAME = 'portfolio-v1';
+const CACHE_NAME = 'portfolio-v2';
 const ASSETS = [
     '/',
     '/index.html',
     '/style.css',
     '/main.js',
     '/favicon.ico',
-    // Add other assets to cache
+    '/offline.html',
+    '/assets/themes/light.css',
+    '/assets/themes/dark.css'
 ];
 
 self.addEventListener('install', (event) => {
@@ -18,7 +20,25 @@ self.addEventListener('install', (event) => {
 self.addEventListener('fetch', (event) => {
     event.respondWith(
         caches.match(event.request)
-            .then(response => response || fetch(event.request))
+            .then(response => {
+                if (response) {
+                    return response;
+                }
+                return fetch(event.request).then(fetchResponse => {
+                    if (fetchResponse && fetchResponse.status === 200) {
+                        const responseToCache = fetchResponse.clone();
+                        caches.open(CACHE_NAME).then(cache => {
+                            cache.put(event.request, responseToCache);
+                        });
+                    }
+                    return fetchResponse;
+                });
+            })
+            .catch(() => {
+                if (event.request.mode === 'navigate') {
+                    return caches.match('/offline.html');
+                }
+            })
     );
 });
 
