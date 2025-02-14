@@ -87,17 +87,12 @@ class Portfolio {
             }
         ];
         this.initializePortfolio();
-        // Remove tech globe and GitHub activity initialization
-        // this.techGlobe = new TechGlobe();
-        // this.githubActivity = new GithubActivity();
-        this.initProjectFilters();
     }
 
     createProjectCard(project) {
         const card = document.createElement('div');
         card.className = 'project-card';
-        card.setAttribute('data-project', project.title);
-
+        
         card.innerHTML = `
             <div class="project-image">
                 <img src="${project.image}" alt="${project.title}" loading="lazy">
@@ -107,15 +102,17 @@ class Portfolio {
                 <div class="tech-stack">
                     ${project.tech.map(tech => `<span class="tech-tag">${tech}</span>`).join('')}
                 </div>
-                <a href="${project.url}" target="_blank" class="view-project-btn">
+                <button class="view-project-btn" onclick="window.open('${project.url}', '_blank')">
                     <span>View Live Project</span>
                     <i class="fas fa-external-link-alt"></i>
-                </a>
+                </button>
             </div>
         `;
-
+        
         return card;
-    }    initializePortfolio() {
+    }
+
+    initializePortfolio() {
         this.loadProjects();
         this.initTypeWriter();
         this.initScrollAnimation();
@@ -276,6 +273,7 @@ class Portfolio {
 
         type();
     }
+
     loadProjects() {
         const projectGrid = document.querySelector('.project-grid');
         projectGrid.innerHTML = '';
@@ -306,11 +304,6 @@ class Portfolio {
         });
     }
 }
-
-// Remove unused classes
-// class TechGlobe {...}
-// class GithubActivity {...}
-// class PortfolioEnhancements {...}
 
 class ThemeManager {
     constructor() {
@@ -345,8 +338,6 @@ document.addEventListener('DOMContentLoaded', () => {
     new Portfolio();
     new ThemeManager();
     initLazyLoading();
-    // Remove PortfolioEnhancements initialization
-    // new PortfolioEnhancements();
 });
 
 function initLazyLoading() {
