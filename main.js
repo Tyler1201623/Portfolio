@@ -333,10 +333,98 @@ class ThemeManager {
     }
 }
 
+// Performance Optimizations
+class PerformanceOptimizer {
+    constructor() {
+        this.initIntersectionObserver();
+        this.initLazyLoading();
+        this.debouncedResize();
+        this.initNetworkStatus();
+    }
+
+    initIntersectionObserver() {
+        // Use a single observer for all animations
+        this.observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    // Unobserve after animation
+                    this.observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '50px'
+        });
+
+        // Observe all animated elements
+        document.querySelectorAll('.animate-on-scroll').forEach(
+            el => this.observer.observe(el)
+        );
+    }
+
+    debouncedResize() {
+        let timeout;
+        window.addEventListener('resize', () => {
+            clearTimeout(timeout);
+            timeout = setTimeout(() => {
+                // Handle resize events
+                this.handleResize();
+            }, 250);
+        });
+    }
+
+    initNetworkStatus() {
+        window.addEventListener('online', this.handleNetworkChange);
+        window.addEventListener('offline', this.handleNetworkChange);
+    }
+
+    handleNetworkChange(event) {
+        const status = event.type === 'online';
+        // Show network status toast
+        this.showToast(`You are ${status ? 'online' : 'offline'}`);
+    }
+
+    showToast(message) {
+        // Implement toast notification
+        const toast = document.createElement('div');
+        toast.className = 'toast';
+        toast.textContent = message;
+        document.body.appendChild(toast);
+        setTimeout(() => toast.remove(), 3000);
+    }
+
+    handleResize() {
+        // Update any necessary responsive elements
+        document.documentElement.style.setProperty(
+            '--vh', 
+            `${window.innerHeight * 0.01}px`
+        );
+    }
+}
+
+// Error Handling
+window.addEventListener('error', (event) => {
+    console.error('Global error:', event.error);
+    // Implement error reporting service here
+});
+
+// Performance Monitoring
+if ('performance' in window) {
+    window.addEventListener('load', () => {
+        setTimeout(() => {
+            const perfData = window.performance.timing;
+            const pageLoadTime = perfData.loadEventEnd - perfData.navigationStart;
+            console.log(`Page load time: ${pageLoadTime}ms`);
+        }, 0);
+    });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     initMobileMenu();
     new Portfolio();
     new ThemeManager();
+    new PerformanceOptimizer();
     initLazyLoading();
 });
 

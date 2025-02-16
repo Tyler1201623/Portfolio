@@ -1,55 +1,78 @@
-const CACHE_NAME = 'portfolio-v2';
-const ASSETS = [
+const CACHE_VERSION = 'v1.0.0';
+const CACHE_NAME = `portfolio-${CACHE_VERSION}`;
+
+// Resources to cache
+const ASSETS_TO_CACHE = [
     '/',
     '/index.html',
     '/style.css',
     '/main.js',
-    '/favicon.ico',
+    '/manifest.json',
     '/offline.html',
-    '/assets/themes/light.css',
-    '/assets/themes/dark.css'
+    // Add other critical assets
 ];
 
-self.addEventListener('install', (event) => {
+// Install Service Worker
+self.addEventListener('install', event => {
     event.waitUntil(
         caches.open(CACHE_NAME)
-            .then(cache => cache.addAll(ASSETS))
+            .then(cache => cache.addAll(ASSETS_TO_CACHE))
+            .then(() => self.skipWaiting())
     );
 });
 
-self.addEventListener('fetch', (event) => {
+// Activate and clean up old caches
+self.addEventListener('activate', event => {
+    event.waitUntil(
+        caches.keys()
+            .then(cacheNames => {
+                return Promise.all(
+                    cacheNames
+                        .filter(name => name.startsWith('portfolio-') && name !== CACHE_NAME)
+                        .map(name => caches.delete(name))
+                );
+            })
+            .then(() => self.clients.claim())
+    );
+});
+
+// Network-first strategy with cache fallback
+self.addEventListener('fetch', event => {
     event.respondWith(
-        caches.match(event.request)
+        fetch(event.request)
             .then(response => {
-                if (response) {
-                    return response;
+                // Cache successful responses
+                if (response && response.status === 200) {
+                    const responseClone = response.clone();
+                    caches.open(CACHE_NAME)
+                        .then(cache => cache.put(event.request, responseClone));
                 }
-                return fetch(event.request).then(fetchResponse => {
-                    if (fetchResponse && fetchResponse.status === 200) {
-                        const responseToCache = fetchResponse.clone();
-                        caches.open(CACHE_NAME).then(cache => {
-                            cache.put(event.request, responseToCache);
-                        });
-                    }
-                    return fetchResponse;
-                });
+                return response;
             })
             .catch(() => {
-                if (event.request.mode === 'navigate') {
-                    return caches.match('/offline.html');
-                }
+                // Fallback to cache
+                return caches.match(event.request)
+                    .then(response => response || caches.match('/offline.html'));
             })
     );
 });
 
-self.addEventListener('activate', (event) => {
-    event.waitUntil(
-        caches.keys().then(keys => Promise.all(
-            keys.map(key => {
-                if (key !== CACHE_NAME) {
-                    return caches.delete(key);
-                }
-            })
-        ))
-    );
+// Handle background sync
+self.addEventListener('sync', event => {
+    if (event.tag === 'sync-forms') {
+        event.waitUntil(syncForms());
+    }
 });
+
+// Background sync function
+async function syncForms() {
+    try {
+        const formData = await getStoredFormData();
+        if (formData.length > 0) {
+            await Promise.all(formData.map(data => submitForm(data)));
+            await clearStoredFormData();
+        }
+    } catch (error) {
+        console.error('Background sync failed:', error);
+    }
+}
