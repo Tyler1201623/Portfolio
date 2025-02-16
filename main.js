@@ -312,14 +312,29 @@ class ThemeManager {
     }
 
     initThemeToggle() {
-        const toggle = document.createElement('button');
-        toggle.className = 'theme-toggle';
-        toggle.innerHTML = '<i class="fas fa-moon"></i>';
-        toggle.setAttribute('aria-label', 'Toggle theme');
-        document.body.appendChild(toggle);
+        const toggle = document.querySelector('.theme-toggle');
+        if (!toggle) return;
 
-        toggle.addEventListener('click', () => this.toggleTheme());
+        // Set initial icon
+        this.updateThemeIcon(toggle);
+        
+        toggle.addEventListener('click', () => {
+            this.toggleTheme();
+            this.updateThemeIcon(toggle);
+        });
+        
         this.applyTheme();
+    }
+
+    updateThemeIcon(toggle) {
+        const icon = toggle.querySelector('i');
+        icon.className = `fas ${this.theme === 'dark' ? 'fa-moon' : 'fa-sun'}`;
+        
+        // Update wrapper background
+        const wrapper = toggle.parentElement;
+        wrapper.style.background = this.theme === 'dark' 
+            ? 'rgba(13, 13, 43, 0.8)' 
+            : 'rgba(255, 255, 255, 0.9)';
     }
 
     toggleTheme() {
@@ -475,3 +490,59 @@ function initMobileMenu() {
         }
     });
 }
+
+// Performance optimization
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+        }
+    });
+}, {
+    threshold: 0.1,
+    rootMargin: '50px'
+});
+
+// Debounce function for performance
+function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+}
+
+// Optimize scroll handlers
+const optimizedScroll = debounce(() => {
+    // Your scroll handling code
+}, 16);
+
+window.addEventListener('scroll', optimizedScroll, { passive: true });
+
+// Optimize image loading
+function lazyLoadImages() {
+    const images = document.querySelectorAll('img[data-src]');
+    const imageObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                img.src = img.dataset.src;
+                img.removeAttribute('data-src');
+                imageObserver.unobserve(img);
+            }
+        });
+    });
+
+    images.forEach(img => imageObserver.observe(img));
+}
+
+// Initialize optimizations
+document.addEventListener('DOMContentLoaded', () => {
+    lazyLoadImages();
+    document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+});

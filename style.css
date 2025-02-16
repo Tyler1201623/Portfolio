@@ -11,14 +11,118 @@
     --light-text: #1e293b;       /* Light Mode Text */
     --light-accent: #2563eb;     /* Light Mode Accent */
     --theme-transition: background-color 0.3s, color 0.3s;
+    --smooth-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    --card-hover-transform: translateY(-5px);
+    --professional-timing: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 [data-theme="light"] {
-    --bg-color: var(--light-bg);
-    --text-color: var(--light-text);
-    --accent-color: var(--light-accent);
-    --card-bg: rgba(241, 245, 249, 0.7);
+    --bg-color: #ffffff;    /* Clean white background */
+    --text-color: #1e293b;  /* Dark slate for text */
+    --accent-color: #2563eb; /* Vibrant blue */
+    --card-bg: #f8fafc;     /* Light gray for cards */
+    --section-bg: #f1f5f9;  /* Slightly darker gray for sections */
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --hover-bg: rgba(37, 99, 235, 0.1);
+    --code-bg: #1e293b;     /* Keep code background dark */
+    --timeline-bg: #f1f5f9;
 }
+
+[data-theme="light"] {
+    .journey-card p {
+        color: var(--text-color) !important; /* Force dark text color */
+    }
+
+    .skill-header span {
+        color: var(--text-color) !important;
+    }
+
+    .intro {
+        color: var(--accent-color) !important;
+        text-shadow: none;
+    }
+
+    .about .section-title,
+    .skills h3,
+    .technical-insights {
+        color: var(--text-color) !important;
+        text-shadow: none;
+    }
+
+    .timeline-content {
+        background: var(--card-bg);
+        color: var(--text-color);
+    }
+
+    .skill-card {
+        background: var(--card-bg);
+        border: 1px solid rgba(37, 99, 235, 0.2);
+    }
+
+    .skill-header i {
+        color: var(--accent-color);
+        text-shadow: none;
+    }
+
+    .stat-number {
+        color: var(--accent-color);
+    }
+
+    .fab, .fas, .far {
+        color: var(--accent-color);
+        text-shadow: none;
+    }
+    
+    .floating-tech i {
+        color: var(--accent-color);
+        text-shadow: none;
+    }
+
+    .tech-tag {
+        color: var(--accent-color);
+        background: var(--hover-bg);
+        border: 1px solid rgba(37, 99, 235, 0.2);
+    }
+
+    /* Fix theme toggle button in light mode */
+    .theme-toggle-wrapper {
+        background: var(--accent-color);
+    }
+    
+    .theme-toggle {
+        background: rgba(0, 0, 0, 0.2); /* Darker background for better contrast */
+    }
+    
+    .theme-toggle i {        color: var(--text-color); /* Use text color instead of white */
+    }
+
+    /* Fix project card title colors */
+    .project-content h3 {
+        background: linear-gradient(135deg, var(--accent-color), #2563eb);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        color: var(--text-color);
+    }
+    /* Fix logo color in light mode */
+    .logo {
+        color: var(--accent-color);
+        text-shadow: 0 0 10px rgba(37, 99, 235, 0.2);
+    }
+
+    /* Fix download resume button in light mode */
+    .cta-secondary {
+        border: 2px solid var(--accent-color);
+        color: var(--accent-color);
+        background: rgba(37, 99, 235, 0.1);
+    }
+
+    .cta-secondary:hover {
+        background: rgba(37, 99, 235, 0.2);
+        box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2);
+    }
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -30,6 +134,7 @@
 
 html {
     scroll-behavior: smooth;
+    font-size: clamp(14px, 1vw, 18px);
 }
 
 body {
@@ -382,6 +487,11 @@ body {
     padding-bottom: 1.5rem;
     transform-style: preserve-3d;
     transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    transition: transform 0.3s var(--professional-timing),
+                box-shadow 0.3s var(--professional-timing),
+                background-color 0.3s var(--professional-timing);
 }
 
 .project-card:hover {
@@ -447,7 +557,9 @@ body {
     pointer-events: auto;
     background: linear-gradient(135deg, #50fa7b, #8be9fd);
     color: #0f172a;
-    padding: 0.8rem 1.8rem;
+    padding: clamp(0.8rem, 2vw, 1.2rem) clamp(1.5rem, 3vw, 2.5rem);
+    font-weight: 600;
+    letter-spacing: 0.5px;
     border-radius: 8px;
     text-decoration: none;
     font-weight: 600;
@@ -649,6 +761,11 @@ footer {
         font-size: 0.9rem;
         padding: 1rem;
     }
+    
+    .profile-img {
+        width: clamp(120px, 30vw, 200px);
+        height: clamp(120px, 30vw, 200px);
+    }
 }
 
 @media (max-width: 480px) {
@@ -728,11 +845,13 @@ footer {
 }
 
 .cta-primary, .cta-secondary {
-    padding: 0.8rem 2rem;
+    padding: clamp(0.8rem, 2vw, 1.2rem) clamp(1.5rem, 3vw, 2.5rem);
     border-radius: 50px;
     text-decoration: none;
     font-weight: 500;
     transition: var(--transition);
+    font-weight: 600;
+    letter-spacing: 0.5px;
 }
 
 .cta-primary {
@@ -801,6 +920,11 @@ footer {
     display: flex;
     gap: 1.5rem;
     align-items: flex-start;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    transition: transform 0.3s var(--professional-timing),
+                box-shadow 0.3s var(--professional-timing),
+                background-color 0.3s var(--professional-timing);
 }
 
 .journey-card i {
@@ -811,9 +935,10 @@ footer {
 }
 
 .journey-card p {
-    font-size: 1.1rem;
+    font-size: clamp(1rem, 1.1vw, 1.2rem);
     line-height: 1.8;
-    margin: 0;
+    max-width: 70ch;
+    margin: 0 auto;
     color: #f8f9fa;
 }
 
@@ -846,6 +971,11 @@ footer {
     padding: 1.5rem;
     border-radius: 12px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    transition: transform 0.3s var(--professional-timing),
+                box-shadow 0.3s var(--professional-timing),
+                background-color 0.3s var(--professional-timing);
 }
 
 .skill-card:hover {
@@ -891,7 +1021,10 @@ footer {
 }
 
 .skill-details {
-    font-size: 0.9rem;
+    font-size: clamp(1rem, 1.1vw, 1.2rem);
+    line-height: 1.8;
+    max-width: 70ch;
+    margin: 0 auto;
     color: rgba(255, 255, 255, 0.7);
     margin-top: 0.8rem;
 }
@@ -1135,6 +1268,8 @@ footer {
 img, video {
     aspect-ratio: attr(width) / attr(height);
     contain: content;
+    object-fit: cover;
+    will-change: transform;
 }
 
 /* Optimize Animations */
@@ -1165,6 +1300,13 @@ img, video {
     body {
         background: white;
         color: black;
+        color: #000;
+        background: #fff;
+        font-size: 12pt;
+    }
+    .project-card, .skill-card {
+        break-inside: avoid;
+        page-break-inside: avoid;
     }
 }
 
@@ -1185,6 +1327,7 @@ img, video {
     position: relative;
     pointer-events: none;
     opacity: 0.6;
+    position: relative;
 }
 
 .loading::after {
@@ -1199,8 +1342,175 @@ img, video {
     border-top-color: var(--accent-color);
     border-radius: 50%;
     animation: spinner 0.6s linear infinite;
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
 }
 
 @keyframes spinner {
     to { transform: rotate(360deg); }
+}
+
+/* Theme Toggle Button */
+.theme-toggle-wrapper {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    border-radius: 50px;
+    background: var(--card-bg);
+    box-shadow: 0 4px 20px var(--shadow-color);
+    backdrop-filter: blur(10px);
+}
+
+.theme-toggle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.theme-toggle i {
+    font-size: 1.2rem;
+    color: var(--text-color); /* This will make the moon icon use the text color */
+    transition: all 0.3s ease;
+}
+
+[data-theme="light"] .theme-toggle i {
+    color: #ffffff; /* White moon in light mode */
+}
+
+@media (max-width: 768px) {
+    .theme-toggle-wrapper {
+        bottom: 1rem;
+        right: 1rem;
+    }
+}
+
+@media print {
+    .theme-toggle-wrapper {
+        display: none;
+    }
+}
+
+[data-theme="light"] .navbar {
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 2px 10px var(--shadow-color);
+}
+
+[data-theme="light"] .project-card,
+[data-theme="light"] .journey-card,
+[data-theme="light"] .skill-card {
+    background: var(--card-bg);
+    box-shadow: 0 4px 20px var(--shadow-color);
+    border: 1px solid rgba(37, 99, 235, 0.1);
+}
+
+[data-theme="light"] .hero {
+    background: linear-gradient(125deg, #f8fafc, #e2e8f0);
+}
+
+[data-theme="light"] .about {
+    background: linear-gradient(125deg, #ffffff, #f1f5f9);
+}
+
+[data-theme="light"] .theme-toggle-wrapper {
+    background: var(--accent-color);
+}
+
+[data-theme="light"] {
+    /* Card and Section Styles */
+    .project-card, .journey-card, .skill-card {
+        background: var(--card-bg);
+        box-shadow: 0 4px 20px var(--shadow-color);
+        border: 1px solid rgba(37, 99, 235, 0.1);
+    }
+
+    /* Text and Heading Styles */
+    .section-title {
+        color: var(--accent-color);
+        text-shadow: none;
+    }
+
+    .typing-text {
+        color: var(--accent-color);
+        text-shadow: none;
+    }
+
+    /* Button and Interactive Elements */
+    .tech-tag {
+        background: var(--timeline-bg);
+        color: var(--accent-color);
+        border: 1px solid rgba(37, 99, 235, 0.2);
+    }
+
+    .view-project-btn {
+        background: var(--accent-color);
+        color: white;
+    }
+
+    /* Timeline and Cards */
+    .timeline-date {
+        background: var(--timeline-bg);
+        color: var(--accent-color);
+        box-shadow: 0 2px 10px var(--shadow-color);
+    }
+
+    /* Code Preview */
+    .code-preview {
+        background: var(--code-bg);
+        box-shadow: 0 4px 20px var(--shadow-color);
+    }
+
+    /* Navigation */
+    .navbar {
+        background: rgba(248, 250, 252, 0.9);
+        box-shadow: 0 2px 10px var(--shadow-color);
+    }
+
+    /* Icons and Accents */
+    .fab, .fas, .far {
+        color: var(--accent-color);
+    }
+}
+
+.section-container, .hero-content {
+    width: min(90%, 1200px);
+    margin-inline: auto;
+}
+
+/* Optimize animations */
+.animate-on-scroll {
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+}
+
+/* Improve text readability */
+p, .journey-card p, .skill-details {
+    font-size: clamp(1rem, 1.1vw, 1.2rem);
+    line-height: 1.8;
+    max-width: 70ch;
+    margin: 0 auto;
+}
+
+/* Dark mode optimization */
+[data-theme="dark"] {
+    color-scheme: dark;
+}
+
+[data-theme="light"] {
+    color-scheme: light;
 }
