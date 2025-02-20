@@ -2391,3 +2391,28 @@ p, .journey-card p, .skill-details {
         padding: 0 1rem;
     }
 }
+
+/* Enhanced Services Section Subtitle */
+.section-subtitle {
+    font-size: 2.5rem;
+    font-weight: 600;
+    text-align: center;
+    margin: 1rem 0 3rem;
+    color: #ffffff;
+    text-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+    letter-spacing: 0.5px;
+}
+
+@media (max-width: 768px) {
+    .section-subtitle {
+        font-size: 2rem;
+        padding: 0 1rem;
+        margin: 0.5rem 0 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .section-subtitle {
+        font-size: 1.8rem;
+    }
+}
