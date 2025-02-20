@@ -222,20 +222,18 @@ class Portfolio {
     initTypeWriter() {
         const text = document.querySelector('.typing-text');
         const words = [
-            'Self-Taught Engineer',
+            'Self-Taught Developer',
             'Full Stack Developer',
             'AI Integration Expert',
             'Machine Learning Engineer',
             'Javascript Developer',
             'AI Solutions Architect',
             'Deep Learning Specialist',
-            'NLP Engineer',
             'Python Developer',
             'AI Expert',
             'Rust Developer',
             'Automation Engineer',
             'Go Lang Developer',
-            'Software Engineer',
             'Tech Innovator'
         ];
         let wordIndex = 0;
@@ -352,7 +350,7 @@ class ThemeManager {
 class PerformanceOptimizer {
     constructor() {
         this.initIntersectionObserver();
-        this.initLazyLoading();
+        this.initImageLazyLoading();
         this.debouncedResize();
         this.initNetworkStatus();
     }
@@ -376,6 +374,22 @@ class PerformanceOptimizer {
         document.querySelectorAll('.animate-on-scroll').forEach(
             el => this.observer.observe(el)
         );
+    }
+
+    initImageLazyLoading() {
+        const images = document.querySelectorAll('img[data-src]');
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    img.src = img.dataset.src;
+                    img.removeAttribute('data-src');
+                    observer.unobserve(img);
+                }
+            });
+        });
+
+        images.forEach(img => imageObserver.observe(img));
     }
 
     debouncedResize() {
@@ -440,24 +454,10 @@ document.addEventListener('DOMContentLoaded', () => {
     new Portfolio();
     new ThemeManager();
     new PerformanceOptimizer();
-    initLazyLoading();
+    new PortfolioEnhancements();
+    new TestimonialCarousel();
+    // Remove redundant initLazyLoading call since it's now part of PerformanceOptimizer
 });
-
-function initLazyLoading() {
-    const images = document.querySelectorAll('img[data-src]');
-    const imageObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const img = entry.target;
-                img.src = img.dataset.src;
-                img.removeAttribute('data-src');
-                observer.unobserve(img);
-            }
-        });
-    });
-
-    images.forEach(img => imageObserver.observe(img));
-}
 
 function initMobileMenu() {
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
@@ -524,25 +524,92 @@ const optimizedScroll = debounce(() => {
 
 window.addEventListener('scroll', optimizedScroll, { passive: true });
 
-// Optimize image loading
-function lazyLoadImages() {
-    const images = document.querySelectorAll('img[data-src]');
-    const imageObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const img = entry.target;
-                img.src = img.dataset.src;
-                img.removeAttribute('data-src');
-                imageObserver.unobserve(img);
-            }
-        });
-    });
+class PortfolioEnhancements {
+    constructor() {
+        this.initMicroInteractions();
+        this.initLearningSection();
+    }
 
-    images.forEach(img => imageObserver.observe(img));
+    initMicroInteractions() {
+        // Add hover effects to cards
+        document.querySelectorAll('.hover-lift').forEach(element => {
+            element.addEventListener('mouseenter', () => {
+                element.style.transform = 'translateY(-5px)';
+                element.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.2)';
+            });
+            element.addEventListener('mouseleave', () => {
+                element.style.transform = 'translateY(0)';
+                element.style.boxShadow = 'none';
+            });
+        });
+    }
+
+    initLearningSection() {
+        const updateLearning = () => {
+            const learningList = document.querySelector('.learning-card ul');
+            if (learningList) {
+                const newItem = document.createElement('li');
+                newItem.textContent = 'New Technology Learned';
+                newItem.style.opacity = '0';
+                learningList.appendChild(newItem);
+                setTimeout(() => newItem.style.opacity = '1', 100);
+            }
+        };
+        
+        // Simplified production check without using process.env
+        if (window.location.hostname !== 'localhost' && 
+            window.location.hostname !== '127.0.0.1') {
+            setInterval(updateLearning, 604800000); // 7 days in milliseconds
+        }
+    }
 }
 
-// Initialize optimizations
-document.addEventListener('DOMContentLoaded', () => {
-    lazyLoadImages();
-    document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
-});
+class TestimonialCarousel {
+    constructor() {
+        this.testimonials = document.querySelector('.testimonials');
+        this.cards = this.testimonials?.children;
+        this.currentIndex = 0;
+        this.isAnimating = false;
+        
+        if (this.cards?.length > 1) {
+            this.initCarousel();
+        }
+    }
+
+    initCarousel() {
+        setInterval(() => this.nextTestimonial(), 5000);
+        this.addSwipeSupport();
+    }
+
+    nextTestimonial() {
+        if (this.isAnimating) return;
+        this.isAnimating = true;
+
+        const current = this.cards[this.currentIndex];
+        this.currentIndex = (this.currentIndex + 1) % this.cards.length;
+        const next = this.cards[this.currentIndex];
+
+        current.style.transform = 'translateX(-100%)';
+        next.style.transform = 'translateX(0)';
+        
+        setTimeout(() => {
+            current.style.transform = '';
+            this.isAnimating = false;
+        }, 500);
+    }
+
+    addSwipeSupport() {
+        let touchStartX = 0;
+        
+        this.testimonials.addEventListener('touchstart', e => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+
+        this.testimonials.addEventListener('touchend', e => {
+            const touchEndX = e.changedTouches[0].screenX;
+            if (touchStartX - touchEndX > 50) {
+                this.nextTestimonial();
+            }
+        }, { passive: true });
+    }
+}

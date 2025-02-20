@@ -10,12 +10,11 @@
     <!-- Preload Critical Resources -->
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" as="style">
     <link rel="preload" href="style.css" as="style">
-    <link rel="preload" href="main.js" as="script">
+    <link rel="preload" href="main.js" as="script" crossorigin="anonymous">
     
     <!-- PWA Support -->
     <link rel="manifest" href="manifest.json">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="mobile-web-app-capable" content="yes">
     
     <!-- SEO Meta Tags -->
     <meta name="description" content="Tyler Keesee - Innovative Full Stack Engineer specializing in AI-powered development, blockchain solutions, and enterprise-grade applications. Expert in Python, JavaScript, and modern web technologies.">
@@ -37,7 +36,6 @@
     <!-- Security Headers -->
     <meta http-equiv="Content-Security-Policy" content="default-src 'self' https:; img-src 'self' https: data:; style-src 'self' https: 'unsafe-inline'; script-src 'self' https: 'unsafe-inline'">
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
-    <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
     <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
 
     <meta name="viewport" content="width=device-width, viewport-fit=cover">
@@ -52,6 +50,11 @@
     <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    
+    <!-- Remove references to non-existent icons -->
+    <!-- <link rel="icon" type="image/png" sizes="192x192" href="favicon/icon-192.png"> -->
+    <!-- <link rel="icon" type="image/png" sizes="512x512" href="favicon/icon-512.png"> -->
+    
     <link rel="manifest" href="manifest.json">
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -163,6 +166,34 @@
             </div>
         </section>
 
+        <section id="why-coding" class="personal-note-section">
+            <div class="section-container">
+                <div class="personal-note glass-effect">
+                    <h3><i class="fas fa-heart"></i> Why I Love Coding</h3>
+                    <p>What started as a curiosity with building PCs has evolved into a deep passion for creating intelligent systems. Every day, I'm excited by the possibility of turning complex ideas into elegant solutions that make a real impact. The constant evolution of technology keeps me learning and growing.</p>
+                </div>
+                
+                <div class="learning-section">
+                    <div class="learning-card hover-lift glass-effect">
+                        <h4><i class="fas fa-graduation-cap"></i> Currently Learning</h4>
+                        <ul>
+                            <li><i class="fas fa-microchip"></i> Custom CPU Architecture Design</li>
+                            <li><i class="fas fa-code"></i> Advanced Systems Programming</li>
+                            <li><i class="fas fa-laptop-code"></i> Full Stack Development</li>
+                        </ul>
+                    </div>
+                    <div class="learning-card hover-lift glass-effect">
+                        <h4><i class="fas fa-trophy"></i> Recent Achievements</h4>
+                        <ul>
+                            <li>Built 50+ Custom Gaming PCs</li>
+                            <li>Mastered Hardware Integration</li>
+                            <li>Advanced System Optimization Expert</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section id="about" class="about">
             <div class="section-container">
                 <h2 class="section-title">About Me</h2>
@@ -219,12 +250,102 @@
         <!-- Remove tech-globe div -->
         <!-- <div id="tech-globe"></div> -->
         
+        <section id="services" class="services-section">
+    <div class="section-container">
+        <h2 class="section-title">Services & Solutions</h2>
+        <p class="section-subtitle">Building Tomorrow's Technology Today</p>
+        
+        <div class="services-grid">
+            <div class="service-card glass-effect hover-lift">
+                <div class="service-icon">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <h3>AI Integration</h3>
+                <p>Custom AI solutions to automate workflows and enhance decision-making</p>
+                <ul class="service-features">
+                    <li><i class="fas fa-check"></i> Machine Learning Implementation</li>
+                    <li><i class="fas fa-check"></i> Neural Network Architecture</li>
+                    <li><i class="fas fa-check"></i> Data Processing Pipelines</li>
+                </ul>
+                <div class="price-tag">
+                    <span class="price">$75</span>/hour
+                </div>
+                <a href="mailto:keeseetyler@yahoo.com" class="service-cta">
+                    Get Started
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <div class="service-card glass-effect hover-lift featured">
+                <div class="service-icon">
+                    <i class="fas fa-code"></i>
+                </div>
+                <h3>Full Stack Development</h3>
+                <p>End-to-end web applications with modern technologies</p>
+                <ul class="service-features">
+                    <li><i class="fas fa-check"></i> Custom Web Applications</li>
+                    <li><i class="fas fa-check"></i> API Development</li>
+                    <li><i class="fas fa-check"></i> Database Architecture</li>
+                </ul>
+                <div class="price-tag">
+                    <span class="price">$65</span>/hour
+                </div>
+                <a href="mailto:keeseetyler@yahoo.com" class="service-cta">
+                    Get Started
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <div class="service-card glass-effect hover-lift">
+                <div class="service-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3>Software Architecture</h3>
+                <p>Scalable and secure system design for enterprise solutions</p>
+                <ul class="service-features">
+                    <li><i class="fas fa-check"></i> System Architecture</li>
+                    <li><i class="fas fa-check"></i> Performance Optimization</li>
+                    <li><i class="fas fa-check"></i> Security Implementation</li>
+                </ul>
+                <div class="price-tag">
+                    <span class="price">$85</span>/hour
+                </div>
+                <a href="mailto:keeseetyler@yahoo.com" class="service-cta">
+                    Get Started
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="service-packages">
+            <div class="package-card glass-effect">
+                <h4>Project Packages</h4>
+                <ul>
+                    <li>
+                        <strong>Starter</strong>
+                        <span>$2,500 - $5,000</span>
+                        <p>Perfect for MVPs and small business solutions</p>
+                    </li>
+                    <li>
+                        <strong>Professional</strong>
+                        <span>$5,000 - $15,000</span>
+                        <p>Comprehensive solutions for growing businesses</p>
+                    </li>
+                    <li>
+                        <strong>Enterprise</strong>
+                        <span>Custom Quote</span>
+                        <p>Large-scale, custom-engineered solutions</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
         <section id="projects" class="projects">
             <div class="section-container">
                 <h2>Featured Projects</h2>
-                <!-- Remove GitHub activity feed -->
                 <div class="project-grid">
-                    <!-- ...existing project cards... -->
                     <div class="project-filters">
                         <button class="filter-btn active" data-filter="all">All</button>
                         <button class="filter-btn" data-filter="ai">AI</button>
@@ -232,7 +353,6 @@
                         <button class="filter-btn" data-filter="mobile">Mobile</button>
                     </div>
                     <!-- Projects will be dynamically loaded via JavaScript -->
-                    <img src="placeholder.jpg" data-src="actual-image.jpg" alt="Project preview" loading="lazy">
                 </div>
             </div>
         </section>
@@ -290,27 +410,42 @@
                 </div>
             </div>
         </section>
+
+        <section id="hire-me" class="cta-section">
+    <div class="section-container">
+        <div class="cta-highlight pulse glass-effect">
+            <h3>Let's Create Something Amazing</h3>
+            <p>Looking for a developer who combines technical expertise with innovative thinking?</p>
+            <div class="cta-button-wrapper">
+                <a href="mailto:keeseetyler@yahoo.com" class="cta-primary prominent solo">
+                    <i class="fas fa-paper-plane"></i> Start a Conversation
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
     </main>
 
     <footer id="contact">
-        <div class="footer-content">
-            <div class="social-links">
-                <a href="mailto:keeseetyler@yahoo.com" class="social-link">
-                    <i class="fas fa-envelope"></i>
-                    <span>keeseetyler@yahoo.com</span>
-                </a>
-                <a href="https://github.com/Tyler1201623" target="_blank" class="social-link">
-                    <i class="fab fa-github"></i>
-                    <span>GitHub</span>
-                </a>
-                <a href="https://www.linkedin.com/in/tyler-keesee-677baa326/" target="_blank" class="social-link">
-                    <i class="fab fa-linkedin"></i>
-                    <span>LinkedIn</span>
-                </a>
-            </div>
-            <p>© 2024 Tyler Keesee. Innovating the Future of Technology.</p>
+    <div class="footer-content">
+        <div class="social-links">
+            <a href="mailto:keeseetyler@yahoo.com" class="social-link">
+                <i class="fas fa-envelope"></i>
+                <span>keeseetyler@yahoo.com</span>
+            </a>
+            <a href="https://github.com/Tyler1201623" target="_blank" class="social-link">
+                <i class="fab fa-github"></i>
+                <span>GitHub</span>
+            </a>
+            <a href="https://www.linkedin.com/in/tyler-keesee-677baa326/" target="_blank" class="social-link">
+                <i class="fab fa-linkedin"></i>
+                <span>LinkedIn</span>
+            </a>
         </div>
-    </footer>
+        <p class="copyright">© 2024 Tyler Keesee. Innovating the Future of Technology.</p>
+    </div>
+</footer>
 
     <div class="theme-toggle-wrapper" aria-label="Theme toggle">
         <button class="theme-toggle" aria-label="Toggle theme">
