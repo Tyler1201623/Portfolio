@@ -156,8 +156,8 @@ class Portfolio {
         document.querySelector('.cta-secondary').addEventListener('click', (e) => {
             e.preventDefault();
             const link = document.createElement('a');
-            link.href = 'resume/Tyler_Keesee_Resume.pdf';
-            link.download = 'Tyler_Keesee_Resume.pdf';
+            link.href = 'resume/Tyler_Keesee_Resume.pdf.png';
+            link.download = 'Tyler_Keesee_Resume.pdf.png';
             link.click();
         });
     }
