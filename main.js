@@ -120,7 +120,6 @@ class Portfolio {
         this.initSkills();
         this.initResumeDownload();
         this.initTimelineAnimation();
-        this.initServiceCards();
         this.initProjectAnimations();
     }
 
@@ -172,17 +171,6 @@ class Portfolio {
         }, { threshold: 0.3 });
 
         document.querySelectorAll('section').forEach(section => observer.observe(section));
-    }
-
-    initServiceCards() {
-        document.querySelectorAll('.service-card').forEach(card => {
-            card.addEventListener('mouseenter', () => {
-                card.style.transform = 'translateY(-10px)';
-            });
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = 'translateY(0)';
-            });
-        });
     }
 
     initSkills() {
