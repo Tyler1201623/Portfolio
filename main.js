@@ -2,6 +2,18 @@ class Portfolio {
   constructor() {
     this.projects = [
       {
+        title: "Portfolio",
+        image: "Projects/Ecom/Screenshot 2025-01-07 123420.png",
+        tech: ["React", "JavaScript", "Responsive Design"],
+        url: "https://tyler1201623.github.io/Portfolio/",
+      },
+      {
+        title: "Recipe Master",
+        image: "Projects/Recipe Master/Screenshot 2025-02-14 035417.png",
+        tech: ["JavaScript", "Recipe API", "UI/UX Design"],
+        url: "https://tyler1201623.github.io/Recipe-Master/",
+      },
+      {
         title: "Game Room",
         image: "Projects/Game Room/Screenshot 2025-03-31 001601.png",
         tech: ["JavaScript", "Gaming", "Interactive UI"],
@@ -68,12 +80,6 @@ class Portfolio {
         image: "Projects/PyLearn/Screenshot 2025-01-10 064928.png",
         tech: ["Python", "Educational", "Interactive Learning"],
         url: "https://tyler1201623.github.io/PyLearn-IDE/",
-      },
-      {
-        title: "Recipe Master",
-        image: "Projects/Recipe Master/Screenshot 2025-02-14 035417.png",
-        tech: ["JavaScript", "Recipe API", "UI/UX Design"],
-        url: "https://tyler1201623.github.io/Recipe-Master/",
       },
       {
         title: "TypeScript ToDo List",
