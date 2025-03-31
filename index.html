@@ -1,366 +1,527 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
-<head>
+  <head>
     <!-- Performance Meta Tags -->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="theme-color" content="#0f172a">
-    
-    <!-- Preload Critical Resources -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" as="style">
-    <link rel="preload" href="style.css" as="style">
-    <link rel="preload" href="main.js" as="script" crossorigin="anonymous">
-    
-    <!-- PWA Support -->
-    <link rel="manifest" href="manifest.json">
-    <meta name="mobile-web-app-capable" content="yes">
-    
-    <!-- SEO Meta Tags -->
-    <meta name="description" content="Tyler Keesee - Innovative Full Stack Engineer specializing in AI-powered development, blockchain solutions, and enterprise-grade applications. Expert in Python, JavaScript, and modern web technologies.">
-    <meta name="keywords" content="Software Engineer, AI Development, Full Stack Developer, JavaScript, Python, React, Machine Learning">
-    <meta name="author" content="Tyler Keesee">
-    
-    <!-- Open Graph / Social Media -->
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Tyler Keesee | Full Stack Engineering Innovator">
-    <meta property="og:description" content="Crafting Next-Generation Digital Solutions">
-    <meta property="og:image" content="Picture Of Me/302094755_5812631322161322_4653173079054672043_n.jpg">
-    <meta property="og:url" content="https://tyler1201623.github.io">
-    
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Tyler Keesee | Full Stack Engineering Innovator">
-    <meta name="twitter:description" content="Crafting Next-Generation Digital Solutions">
-    
-    <!-- Security Headers -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https:; img-src 'self' https: data:; style-src 'self' https: 'unsafe-inline'; script-src 'self' https: 'unsafe-inline'">
-    <meta http-equiv="X-Content-Type-Options" content="nosniff">
-    <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="theme-color" content="#0f172a" />
 
-    <meta name="viewport" content="width=device-width, viewport-fit=cover">
+    <!-- Preload Critical Resources -->
+    <link
+      rel="preload"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      as="style"
+    />
+    <link rel="preload" href="style.css" as="style" />
+    <link rel="preload" href="main.js" as="script" crossorigin="anonymous" />
+
+    <!-- PWA Support -->
+    <link rel="manifest" href="manifest.json" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <!-- SEO Meta Tags -->
+    <meta
+      name="description"
+      content="Tyler Keesee - Innovative Full Stack Engineer specializing in AI-powered development, blockchain solutions, and enterprise-grade applications. Expert in Python, JavaScript, and modern web technologies."
+    />
+    <meta
+      name="keywords"
+      content="Software Engineer, AI Development, Full Stack Developer, JavaScript, Python, React, Machine Learning"
+    />
+    <meta name="author" content="Tyler Keesee" />
+
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="Tyler Keesee | Full Stack Engineering Innovator"
+    />
+    <meta
+      property="og:description"
+      content="Crafting Next-Generation Digital Solutions"
+    />
+    <meta
+      property="og:image"
+      content="Picture Of Me/302094755_5812631322161322_4653173079054672043_n.jpg"
+    />
+    <meta property="og:url" content="https://tyler1201623.github.io" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Tyler Keesee | Full Stack Engineering Innovator"
+    />
+    <meta
+      name="twitter:description"
+      content="Crafting Next-Generation Digital Solutions"
+    />
+
+    <!-- Security Headers -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self' https:; img-src 'self' https: data:; style-src 'self' https: 'unsafe-inline'; script-src 'self' https: 'unsafe-inline'"
+    />
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <meta
+      http-equiv="Permissions-Policy"
+      content="geolocation=(), microphone=(), camera=()"
+    />
+
+    <meta name="viewport" content="width=device-width, viewport-fit=cover" />
     <title>Tyler Keesee | Self-Taught Engineer</title>
-    
-    <meta name="description" content="Tyler Keesee - Innovative Full Stack Engineer specializing in AI-powered development, blockchain solutions, and enterprise-grade applications">
-    <meta property="og:title" content="Tyler Keesee | Full Stack Engineering Innovator">
-    <meta property="og:description" content="Crafting Next-Generation Digital Solutions">
-    <meta property="og:image" content="Picture Of Me/302094755_5812631322161322_4653173079054672043_n.jpg">
-    <meta name="theme-color" content="#0d0d2b">
-    
-    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
-    
+
+    <meta
+      name="description"
+      content="Tyler Keesee - Innovative Full Stack Engineer specializing in AI-powered development, blockchain solutions, and enterprise-grade applications"
+    />
+    <meta
+      property="og:title"
+      content="Tyler Keesee | Full Stack Engineering Innovator"
+    />
+    <meta
+      property="og:description"
+      content="Crafting Next-Generation Digital Solutions"
+    />
+    <meta
+      property="og:image"
+      content="Picture Of Me/302094755_5812631322161322_4653173079054672043_n.jpg"
+    />
+    <meta name="theme-color" content="#0d0d2b" />
+
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="favicon/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="favicon/favicon-16x16.png"
+    />
+
     <!-- Remove references to non-existent icons -->
     <!-- <link rel="icon" type="image/png" sizes="192x192" href="favicon/icon-192.png"> -->
     <!-- <link rel="icon" type="image/png" sizes="512x512" href="favicon/icon-512.png"> -->
-    
-    <link rel="manifest" href="manifest.json">
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" as="style">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <link rel="manifest" href="manifest.json" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="preload"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      as="style"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
     <!-- Remove Three.js and Particles.js -->
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script> -->
     <!-- <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script> -->
-    
+
     <!-- Performance Optimizations -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com" />
+
     <!-- SEO Improvements -->
-    <meta name="robots" content="index, follow">
-    <meta name="googlebot" content="index, follow">
-    <meta name="revisit-after" content="7 days">
-    <link rel="canonical" href="https://yourwebsite.com">
-    
+    <meta name="robots" content="index, follow" />
+    <meta name="googlebot" content="index, follow" />
+    <meta name="revisit-after" content="7 days" />
+    <link rel="canonical" href="https://yourwebsite.com" />
+
     <!-- Browser Compatibility -->
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="format-detection" content="telephone=no">
-    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="format-detection" content="telephone=no" />
+
     <!-- Security Headers -->
-    <meta http-equiv="Strict-Transport-Security" content="max-age=31536000; includeSubDomains">
-    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
-    
+    <meta
+      http-equiv="Strict-Transport-Security"
+      content="max-age=31536000; includeSubDomains"
+    />
+    <meta
+      http-equiv="Referrer-Policy"
+      content="strict-origin-when-cross-origin"
+    />
+
     <!-- Performance Attributes -->
-    <link rel="modulepreload" href="main.js">
-    <link rel="preload" href="style.css" as="style">
-</head>
-<body>
+    <link rel="modulepreload" href="main.js" />
+    <link rel="preload" href="style.css" as="style" />
+  </head>
+  <body>
     <a href="#main" class="skip-link">Skip to main content</a>
     <header class="navbar">
-        <div class="nav-content">
-            <a href="#home" class="logo">TK</a>
-            <button class="mobile-menu-btn" aria-label="Toggle menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            <nav>
-                <ul class="nav-links">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#timeline">Timeline</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
+      <div class="nav-content">
+        <a href="#home" class="logo">TK</a>
+        <button class="mobile-menu-btn" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <nav>
+          <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#timeline">Timeline</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
     </header>
     <main id="main">
-        <section id="home" class="hero">
-            <div class="hero-content">
-                <img src="Picture Of Me/302094755_5812631322161322_4653173079054672043_n.jpg" alt="Tyler Keesee" class="profile-img">
-                <div class="hero-header">
-                    <h1>Tyler Keesee</h1>
-                    <div class="age-badge">
-                        <i class="fas fa-user"></i>
-                        <span>24 Years Old</span>
-                        <span class="divider">|</span>
-                        <span>Self-Taught Software Engineer</span>
-                    </div>
-                </div>
-                <div class="typing-text"></div>
-                
-                <div class="hero-badges">
-                    <span class="badge"><i class="fas fa-code-branch"></i> 100+ Projects</span>
-                    <span class="badge"><i class="fas fa-brain"></i> AI Expert</span>
-                    <span class="badge"><i class="fas fa-rocket"></i> Tech Enthusiast </span>
-                </div>
-                  <div class="code-preview">
-      <pre><code>
+      <section id="home" class="hero">
+        <div class="hero-content">
+          <img
+            src="Picture Of Me/302094755_5812631322161322_4653173079054672043_n.jpg"
+            alt="Tyler Keesee"
+            class="profile-img"
+          />
+          <div class="hero-header">
+            <h1>Tyler Keesee</h1>
+            <div class="age-badge">
+              <i class="fas fa-user"></i>
+              <span>24 Years Old</span>
+              <span class="divider">|</span>
+              <span>Self-Taught Software Engineer Utilizing AI</span>
+            </div>
+          </div>
+          <div class="typing-text"></div>
+
+          <div class="hero-badges">
+            <span class="badge"
+              ><i class="fas fa-code-branch"></i> 100+ Projects</span
+            >
+            <span class="badge"><i class="fas fa-brain"></i> AI Expert</span>
+            <span class="badge"
+              ><i class="fas fa-rocket"></i> Tech Enthusiast
+            </span>
+          </div>
+          <div class="code-preview">
+            <pre><code>
   <span class="keyword">const</span> <span class="variable">skills</span> = [<span class="string">'AI'</span>, <span class="string">'ML'</span>, <span class="string">'Full Stack'</span>];
   <span class="keyword">const</span> <span class="variable">passion</span> = <span class="string">'Innovation'</span>;
   <span class="keyword">const</span> <span class="variable">result</span> = <span class="function">buildNextGenSolution</span>();
       </code></pre>
-  </div>
-                <div class="floating-tech">
-                    <i class="fab fa-python"></i>
-                    <i class="fab fa-rust"></i>
-                    <i class="fab fa-js"></i>
-                    <i class="fab fa-golang"></i>
-                </div>
-                <div class="quick-stats">
-                    <div class="stat">
-                        <span class="stat-number">1+</span>
-                        <span class="stat-label">Years Coding</span>
-                    </div>
-                    <div class="stat">
-                        <span class="stat-number">100+</span>
-                        <span class="stat-label">AI Projects</span>
-                    </div>
-                    <div class="stat">
-                        <span class="stat-number">10+</span>
-                        <span class="stat-label">Technologies</span>
-                    </div>
-                </div>
-                <p class="tagline">
-                    I'm passionate about building AI systems that break new ground and open up exciting possibilities. I love creating innovative software solutions that tackle real-world business problems in clever ways. My work focuses on developing systems that grow smoothly from initial concept to full-scale deployment, turning complex data into valuable insights. By combining deep technical knowledge with creative thinking, I build future-ready technology that makes a real difference. I thrive on pushing technology to new heights and seeing my solutions create positive change in our fast-moving digital world.
-                </p>                                     
-                <div class="cta-buttons">
-                    <a href="#projects" class="cta-primary">View Projects</a>
-                    <a href="resume/Tyler_Keesee_Resume.pdf" class="cta-secondary" download>Download Resume</a>
-                </div>
+          </div>
+          <div class="floating-tech">
+            <i class="fab fa-python"></i>
+            <i class="fab fa-rust"></i>
+            <i class="fab fa-js"></i>
+            <i class="fab fa-golang"></i>
+          </div>
+          <div class="quick-stats">
+            <div class="stat">
+              <span class="stat-number">1+</span>
+              <span class="stat-label">Years Coding</span>
             </div>
-        </section>
-
-        <section id="why-coding" class="personal-note-section">
-            <div class="section-container">
-                <div class="personal-note glass-effect">
-                    <h3><i class="fas fa-heart"></i> Why I Love Coding</h3>
-                    <p>What started as a curiosity with building PCs has evolved into a deep passion for creating intelligent systems. Every day, I'm excited by the possibility of turning complex ideas into elegant solutions that make a real impact. The constant evolution of technology keeps me learning and growing.</p>
-                </div>
-                
-                <div class="learning-section">
-                    <div class="learning-card hover-lift glass-effect">
-                        <h4><i class="fas fa-graduation-cap"></i> Currently Learning</h4>
-                        <ul>
-                            <li><i class="fas fa-microchip"></i> Custom CPU Architecture Design</li>
-                            <li><i class="fas fa-code"></i> Advanced Systems Programming</li>
-                            <li><i class="fas fa-laptop-code"></i> Full Stack Development</li>
-                        </ul>
-                    </div>
-                    <div class="learning-card hover-lift glass-effect">
-                        <h4><i class="fas fa-trophy"></i> Recent Achievements</h4>
-                        <ul>
-                            <li>Built 50+ Custom Gaming PCs</li>
-                            <li>Mastered Hardware Integration</li>
-                            <li>Advanced System Optimization Expert</li>
-                        </ul>
-                    </div>
-                </div>
+            <div class="stat">
+              <span class="stat-number">100+</span>
+              <span class="stat-label">AI Projects</span>
             </div>
-        </section>
-
-        <section id="about" class="about">
-            <div class="section-container">
-                <h2 class="section-title">About Me</h2>
-                <div class="about-content">
-                    <div class="about-text">
-                        <p class="intro">Self-Taught Engineer crafting innovative solutions through code.</p>
-                        <div class="journey">
-                            <div class="journey-card">
-                                <i class="fas fa-microchip"></i>
-                                <p>Started my tech journey at 18, teaching myself how to build custom gaming PCs. This early passion ignited my drive to explore software development, web technologies, and system optimization.</p>
-                            </div>
-                            <div class="journey-card">
-                                <i class="fas fa-brain"></i>
-                                <p>As a self-taught software engineer, I specialize in leveraging AI to deliver efficient, scalable solutions. My expertise includes full-stack development, creating robust applications, and solving complex problems across multiple domains.</p>
-                            </div>
-                        </div>
-                        <div class="skills">
-                            <h3>Technical Expertise</h3>
-                            <div class="skills-grid">
-                                <div class="skill-card">
-                                    <div class="skill-header">
-                                        <i class="fab fa-python"></i>
-                                        <span>Python</span>
-                                    </div>
-                                    <div class="skill-bar-container">
-                                        <div class="skill-bar" data-level="90"></div>
-                                    </div>
-                                </div>
-                                <div class="skill-card">
-                                    <div class="skill-header">
-                                        <i class="fab fa-js"></i>
-                                        <span>JavaScript</span>
-                                    </div>
-                                    <div class="skill-bar-container">
-                                        <div class="skill-bar" data-level="85"></div>
-                                    </div>
-                                </div>
-                                <div class="skill-card">
-                                    <div class="skill-header">
-                                        <i class="fab fa-react"></i>
-                                        <span>React</span>
-                                    </div>
-                                    <div class="skill-bar-container">
-                                        <div class="skill-bar" data-level="80"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="stat">
+              <span class="stat-number">10+</span>
+              <span class="stat-label">Technologies</span>
             </div>
-        </section>
+          </div>
+          <p class="tagline">
+            I'm passionate about building AI systems that break new ground and
+            open up exciting possibilities. I love creating innovative software
+            solutions that tackle real-world business problems in clever ways.
+            My work focuses on developing systems that grow smoothly from
+            initial concept to full-scale deployment, turning complex data into
+            valuable insights. By combining deep technical knowledge with
+            creative thinking, I build future-ready technology that makes a real
+            difference. I thrive on pushing technology to new heights and seeing
+            my solutions create positive change in our fast-moving digital
+            world.
+          </p>
+          <div class="cta-buttons">
+            <a href="#projects" class="cta-primary">View Projects</a>
+            <a
+              href="resume/Tyler_Keesee_Resume.pdf"
+              class="cta-secondary"
+              download
+              >Download Resume</a
+            >
+          </div>
+        </div>
+      </section>
 
-        <!-- Remove tech-globe div -->
-        <!-- <div id="tech-globe"></div> -->
-        
-        <section id="projects" class="projects">
-            <div class="section-container">
-                <h2>Featured Projects</h2>
-                <div class="project-grid">
-                    <div class="project-filters">
-                        <button class="filter-btn active" data-filter="all">All</button>
-                        <button class="filter-btn" data-filter="ai">AI</button>
-                        <button class="filter-btn" data-filter="web">Web</button>
-                        <button class="filter-btn" data-filter="mobile">Mobile</button>
-                    </div>
-                    <!-- Projects will be dynamically loaded via JavaScript -->
-                </div>
+      <section id="why-coding" class="personal-note-section">
+        <div class="section-container">
+          <div class="personal-note glass-effect">
+            <h3><i class="fas fa-heart"></i> Why I Love Coding</h3>
+            <p>
+              What started as a curiosity with building PCs has evolved into a
+              deep passion for creating intelligent systems. Every day, I'm
+              excited by the possibility of turning complex ideas into elegant
+              solutions that make a real impact. The constant evolution of
+              technology keeps me learning and growing.
+            </p>
+          </div>
+
+          <div class="learning-section">
+            <div class="learning-card hover-lift glass-effect">
+              <h4><i class="fas fa-graduation-cap"></i> Currently Learning</h4>
+              <ul>
+                <li>
+                  <i class="fas fa-microchip"></i> Custom CPU Architecture
+                  Design
+                </li>
+                <li>
+                  <i class="fas fa-code"></i> Advanced Systems Programming
+                </li>
+                <li>
+                  <i class="fas fa-laptop-code"></i> Full Stack Development
+                </li>
+              </ul>
             </div>
-        </section>
+            <div class="learning-card hover-lift glass-effect">
+              <h4><i class="fas fa-trophy"></i> Recent Achievements</h4>
+              <ul>
+                <li>Built 50+ Custom Gaming PCs</li>
+                <li>Mastered Hardware Integration</li>
+                <li>Advanced System Optimization Expert</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
 
-        <!-- Remove empty tech stack section -->
-        <!-- <section id="tech-stack" class="tech-stack-section">
+      <section id="about" class="about">
+        <div class="section-container">
+          <h2 class="section-title">About Me</h2>
+          <div class="about-content">
+            <div class="about-text">
+              <p class="intro">
+                Self-Taught Engineer crafting innovative solutions through code.
+              </p>
+              <div class="journey">
+                <div class="journey-card">
+                  <i class="fas fa-microchip"></i>
+                  <p>
+                    Started my tech journey at 18, teaching myself how to build
+                    custom gaming PCs. This early passion ignited my drive to
+                    explore software development, web technologies, and system
+                    optimization.
+                  </p>
+                </div>
+                <div class="journey-card">
+                  <i class="fas fa-brain"></i>
+                  <p>
+                    As a self-taught software engineer, I specialize in
+                    leveraging AI to deliver efficient, scalable solutions. My
+                    expertise includes full-stack development, creating robust
+                    applications, and solving complex problems across multiple
+                    domains.
+                  </p>
+                </div>
+              </div>
+              <div class="skills">
+                <h3>Technical Expertise</h3>
+                <div class="skills-grid">
+                  <div class="skill-card">
+                    <div class="skill-header">
+                      <i class="fab fa-python"></i>
+                      <span>Python</span>
+                    </div>
+                    <div class="skill-bar-container">
+                      <div class="skill-bar" data-level="90"></div>
+                    </div>
+                  </div>
+                  <div class="skill-card">
+                    <div class="skill-header">
+                      <i class="fab fa-js"></i>
+                      <span>JavaScript</span>
+                    </div>
+                    <div class="skill-bar-container">
+                      <div class="skill-bar" data-level="85"></div>
+                    </div>
+                  </div>
+                  <div class="skill-card">
+                    <div class="skill-header">
+                      <i class="fab fa-react"></i>
+                      <span>React</span>
+                    </div>
+                    <div class="skill-bar-container">
+                      <div class="skill-bar" data-level="80"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Remove tech-globe div -->
+      <!-- <div id="tech-globe"></div> -->
+
+      <section id="projects" class="projects">
+        <div class="section-container">
+          <h2>Featured Projects</h2>
+          <div class="project-grid">
+            <div class="project-filters">
+              <button class="filter-btn active" data-filter="all">All</button>
+              <button class="filter-btn" data-filter="ai">AI</button>
+              <button class="filter-btn" data-filter="web">Web</button>
+              <button class="filter-btn" data-filter="mobile">Mobile</button>
+            </div>
+            <!-- Projects will be dynamically loaded via JavaScript -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Remove empty tech stack section -->
+      <!-- <section id="tech-stack" class="tech-stack-section">
             <h2>Technology Expertise</h2>
             <div class="tech-radar"></div>
         </section> -->
 
-        <section id="timeline" class="timeline">
-            <div class="section-container">
-                <h2>My Journey</h2>
-                <div class="timeline-container">
-                    <div class="timeline-item">
-                        <div class="timeline-date">2018</div>
-                        <div class="timeline-content">
-                            <h3>Started Custom PC Building</h3>
-                            <p>Began building custom gaming PCs, learning hardware integration and system optimization. Mastered component selection and compatibility testing. Developed expertise in thermal management and power delivery systems.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-date">2018-2023</div>
-                        <div class="timeline-content">
-                            <h3>Advanced PC Building</h3>
-                            <p>Refined PC building skills, specializing in high-performance gaming rigs and workstations. Implemented custom water cooling solutions and overclocking techniques. Delivered over 50 custom builds with specific performance requirements and budgets.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-date">2024-Present</div>
-                        <div class="timeline-content">
-                            <h3>Software Development Journey</h3>
-                            <p>Self-taught full stack development, AI integration, and advanced programming. Built multiple production-ready applications using modern tech stacks. Specialized in AI-driven solutions and automated systems, contributing to open-source projects.</p>
-                        </div>
-                    </div>
-                </div>
+      <section id="timeline" class="timeline">
+        <div class="section-container">
+          <h2>My Journey</h2>
+          <div class="timeline-container">
+            <div class="timeline-item">
+              <div class="timeline-date">2018</div>
+              <div class="timeline-content">
+                <h3>Started Custom PC Building</h3>
+                <p>
+                  Began building custom gaming PCs, learning hardware
+                  integration and system optimization. Mastered component
+                  selection and compatibility testing. Developed expertise in
+                  thermal management and power delivery systems.
+                </p>
+              </div>
             </div>
-        </section>
-
-        <section id="blog" class="blog">
-            <div class="section-container">
-                <h2 class="section-title technical-insights">Technical Insights</h2>
-                <div class="blog-grid">
-                    <article class="blog-card">
-                        <div class="blog-content">
-                            <h3>Building Scalable AI Solutions</h3>
-                            <p>Insights into architecting robust AI systems that can handle growing demands...</p>
-                            <div class="blog-meta">
-                                <span><i class="far fa-clock"></i> 5 min read</span>
-                                <span><i class="fas fa-tag"></i> AI Architecture</span>
-                            </div>
-                            <a href="building-scalable-ai-solutions.html" class="read-more">Read Article <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                    </article>
-                </div>
+            <div class="timeline-item">
+              <div class="timeline-date">2018-2023</div>
+              <div class="timeline-content">
+                <h3>Advanced PC Building</h3>
+                <p>
+                  Refined PC building skills, specializing in high-performance
+                  gaming rigs and workstations. Implemented custom water cooling
+                  solutions and overclocking techniques. Delivered over 50
+                  custom builds with specific performance requirements and
+                  budgets.
+                </p>
+              </div>
             </div>
-        </section>
-
-        <section id="hire-me" class="cta-section">
-    <div class="section-container">
-        <div class="cta-highlight pulse glass-effect">
-            <h3>Let's Create Something Amazing</h3>
-            <p>Looking for a developer who combines technical expertise with innovative thinking?</p>
-            <div class="cta-button-wrapper">
-                <a href="mailto:keeseetyler@yahoo.com" class="cta-primary prominent solo">
-                    <i class="fas fa-paper-plane"></i> Start a Conversation
-                </a>
+            <div class="timeline-item">
+              <div class="timeline-date">2024-Present</div>
+              <div class="timeline-content">
+                <h3>Software Development Journey</h3>
+                <p>
+                  Self-taught full stack development, AI integration, and
+                  advanced programming. Built multiple production-ready
+                  applications using modern tech stacks. Specialized in
+                  AI-driven solutions and automated systems, contributing to
+                  open-source projects.
+                </p>
+              </div>
             </div>
+          </div>
         </div>
-    </div>
-</section>
+      </section>
 
+      <section id="blog" class="blog">
+        <div class="section-container">
+          <h2 class="section-title technical-insights">Technical Insights</h2>
+          <div class="blog-grid">
+            <article class="blog-card">
+              <div class="blog-content">
+                <h3>Building Scalable AI Solutions</h3>
+                <p>
+                  Insights into architecting robust AI systems that can handle
+                  growing demands...
+                </p>
+                <div class="blog-meta">
+                  <span><i class="far fa-clock"></i> 5 min read</span>
+                  <span><i class="fas fa-tag"></i> AI Architecture</span>
+                </div>
+                <a href="building-scalable-ai-solutions.html" class="read-more"
+                  >Read Article <i class="fas fa-arrow-right"></i
+                ></a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="hire-me" class="cta-section">
+        <div class="section-container">
+          <div class="cta-highlight pulse glass-effect">
+            <h3>Let's Create Something Amazing</h3>
+            <p>
+              Looking for a developer who combines technical expertise with
+              innovative thinking?
+            </p>
+            <div class="cta-button-wrapper">
+              <a
+                href="mailto:keeseetyler@yahoo.com"
+                class="cta-primary prominent solo"
+              >
+                <i class="fas fa-paper-plane"></i> Start a Conversation
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
 
     <footer id="contact">
-    <div class="footer-content">
+      <div class="footer-content">
         <div class="social-links">
-            <a href="mailto:keeseetyler@yahoo.com" class="social-link">
-                <i class="fas fa-envelope"></i>
-                <span>keeseetyler@yahoo.com</span>
-            </a>
-            <a href="https://github.com/Tyler1201623" target="_blank" class="social-link">
-                <i class="fab fa-github"></i>
-                <span>GitHub</span>
-            </a>
-            <a href="https://www.linkedin.com/in/tyler-keesee-677baa326/" target="_blank" class="social-link">
-                <i class="fab fa-linkedin"></i>
-                <span>LinkedIn</span>
-            </a>
+          <a href="mailto:keeseetyler@yahoo.com" class="social-link">
+            <i class="fas fa-envelope"></i>
+            <span>keeseetyler@yahoo.com</span>
+          </a>
+          <a
+            href="https://github.com/Tyler1201623"
+            target="_blank"
+            class="social-link"
+          >
+            <i class="fab fa-github"></i>
+            <span>GitHub</span>
+          </a>
+          <a
+            href="https://www.linkedin.com/in/tyler-keesee-677baa326/"
+            target="_blank"
+            class="social-link"
+          >
+            <i class="fab fa-linkedin"></i>
+            <span>LinkedIn</span>
+          </a>
         </div>
-        <p class="copyright">© 2024 Tyler Keesee. Innovating the Future of Technology.</p>
-    </div>
-</footer>
+        <p class="copyright">
+          © 2025 Tyler Keesee. Innovating the Future of Technology.
+        </p>
+      </div>
+    </footer>
 
     <div class="theme-toggle-wrapper" aria-label="Theme toggle">
-        <button class="theme-toggle" aria-label="Toggle theme">
-            <i class="fas fa-moon"></i>
-        </button>
+      <button class="theme-toggle" aria-label="Toggle theme">
+        <i class="fas fa-moon"></i>
+      </button>
     </div>
 
     <script src="main.js"></script>
     <script src="sw.js"></script>
-</body>
+  </body>
 </html>
